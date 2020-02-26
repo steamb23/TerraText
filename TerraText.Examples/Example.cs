@@ -161,16 +161,39 @@ namespace TerraText.Examples
         public static void AlignedWriteExample()
         {
             Console.Clear();
+
+            Console.WriteLine($"현재 CJK 모드의 상태는 {UnicodeWidth.IsModeCJK} 입니다.");
+            Console.WriteLine($"현재 설정된 콘솔의 글꼴이 '굴림체'거나 '돋움체', 'MS Gothic'이면 true여야합니다.");
+            Console.WriteLine($"true나 false를 입력하여 설정해주세요.");
+            if (bool.TryParse(ConsoleEx.ReadLineWithCursor(), out var isModeCJK))
+            {
+                UnicodeWidth.IsModeCJK = isModeCJK;
+                Console.WriteLine($"현재 CJK 모드의 상태를 {UnicodeWidth.IsModeCJK} 로 변경했습니다.");
+            }
+            else
+            {
+                Console.WriteLine("현재 상태를 유지합니다.");
+            }
+            Console.WriteLine("출력할 문장을 입력해주세요. (기본값 : 다람쥐 헌 쳇바퀴에 타고파◆)");
+            var text = ConsoleEx.ReadLineWithCursor();
+            if (string.IsNullOrEmpty(text))
+                text = "다람쥐 헌 쳇바퀴에 타고파◆";
+            Console.WriteLine("출력할 길이를 입력해주세요. 반각 문자는 1의 길이 이며 전각 문자는 2의 길이입니다. (기본값 : 40)");
+            if (!int.TryParse(ConsoleEx.ReadLineWithCursor(), out var length))
+                length = 40;
+
             Console.WriteLine(SGR.Negative);
-            string text = "ㅁ";
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite(text, TextAlign.Left, 6);
+            ConsoleEx.AlignedWrite("가나다라마바사", TextAlign.Left, length);
             Console.WriteLine();
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite(text, TextAlign.Center, 6);
+            ConsoleEx.AlignedWrite(text, TextAlign.Left, length);
             Console.WriteLine();
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite(text, TextAlign.Right, 6);
+            ConsoleEx.AlignedWrite(text, TextAlign.Center, length);
+            Console.WriteLine();
+            Console.CursorLeft = 10;
+            ConsoleEx.AlignedWrite(text, TextAlign.Right, length);
             Console.WriteLine(SGR.Positive);
 
             ConsoleEx.WaitKeyWithCursor();
