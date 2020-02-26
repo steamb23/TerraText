@@ -84,9 +84,9 @@ namespace TerraText
             /// 전경색으로 하얀색을 적용합니다.
             /// </summary>
             ForegroundWhite = 37,
-            /// <summary>
-            /// 전경색으로 확장 색상 값을 적용합니다.
-            /// </summary>
+            ///// <summary>
+            ///// 전경색으로 확장 색상 값을 적용합니다.
+            ///// </summary>
             //ForegroundExtended = 38,
             /// <summary>
             /// 전경색을 기본값으로 되돌립니다.
@@ -124,9 +124,9 @@ namespace TerraText
             /// 배경색으로 하얀색을 적용합니다.
             /// </summary>
             BackgroundWhite = 47,
-            /// <summary>
-            /// 배경색으로 확장 색상 값을 적용합니다.
-            /// </summary>
+            ///// <summary>
+            ///// 배경색으로 확장 색상 값을 적용합니다.
+            ///// </summary>
             //BackgroundExtended = 48,
             /// <summary>
             /// 배경색을 기본값으로 되돌립니다.
@@ -196,6 +196,33 @@ namespace TerraText
             /// 배경색으로 밝은 하얀색을 적용합니다.
             /// </summary>
             BrightBackgroundWhite = 107,
+        }
+        public static string RemoveSequence(string value)
+        {
+            var stringBuilder = new StringBuilder();
+            bool escapeSequence = false;
+            for(var i = 0; i < value.Length; i++)
+            {
+                var character = value[i];
+                if (escapeSequence)
+                {
+                    // 특정 문자를 만날 때까지 넘김
+                    switch (character)
+                    {
+                        case 'm':
+                            escapeSequence = false;
+                            break;
+                    }
+                }
+                else
+                {
+                    if (character == EscapeChar)
+                        escapeSequence = true;
+                    else
+                        stringBuilder.Append(character);
+                }
+            }
+            return stringBuilder.ToString();
         }
 
         public static string SGR(int param)
