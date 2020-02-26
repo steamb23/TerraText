@@ -1,0 +1,909 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TerraText</name>
+    </assembly>
+    <members>
+        <member name="T:TerraText.ColorMap">
+            <summary>
+            시스템 콘솔과 호환되는 컬러 맵을 나타냅니다.
+            </summary>
+            <remarks>
+            시스템 콘솔 호환 컬러 맵 설정은 생성자 재정의를 이용합니다. 자세한 구현은 <see cref="T:TerraText.ColorMaps.ModernConsoleColor"/>의 구현을 참조하세요.
+            </remarks>
+        </member>
+        <member name="T:TerraText.ColorMap.Default">
+            <summary>
+            기본 컬러 맵을 나타냅니다.
+            </summary>
+            <remarks>
+            초기 값은 <see cref="T:TerraText.ColorMaps.ModernConsoleColor"/>로 설정됩니다.
+            </remarks>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.ColorMap">
+            <summary>
+            기본적으로 사용하는 컬러맵을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.ColorMap.Default.SetConsoleDefault">
+            <summary>
+            현재 콘솔 색상 팔레트를 현재 기본값으로 초기화합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Black">
+            <summary>
+            <see cref="F:System.ConsoleColor.Black"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkBlue">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkBlue"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkGreen">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkGreen"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkCyan">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkCyan"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkRed">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkRed"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkMagenta">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkMagenta"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkYellow">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkYellow"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Gray">
+            <summary>
+            <see cref="F:System.ConsoleColor.Gray"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.DarkGray">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkGray"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Blue">
+            <summary>
+            <see cref="F:System.ConsoleColor.Blue"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Green">
+            <summary>
+            <see cref="F:System.ConsoleColor.Green"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Cyan">
+            <summary>
+            <see cref="F:System.ConsoleColor.Cyan"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Red">
+            <summary>
+            <see cref="F:System.ConsoleColor.Red"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Magenta">
+            <summary>
+            <see cref="F:System.ConsoleColor.Magenta"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.Yellow">
+            <summary>
+            <see cref="F:System.ConsoleColor.Yellow"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Default.White">
+            <summary>
+            <see cref="F:System.ConsoleColor.White"/>에 대응되는 색상의 RGB 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.ColorMap.SetConsoleDefault">
+            <summary>
+            현재 콘솔 색상 팔레트를 이 객체의 내용으로 초기화합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Black">
+            <summary>
+            <see cref="F:System.ConsoleColor.Black"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkBlue">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkBlue"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkGreen">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkGreen"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkCyan">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkCyan"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkRed">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkRed"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkMagenta">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkMagenta"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkYellow">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkYellow"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Gray">
+            <summary>
+            <see cref="F:System.ConsoleColor.Gray"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.DarkGray">
+            <summary>
+            <see cref="F:System.ConsoleColor.DarkGray"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Blue">
+            <summary>
+            <see cref="F:System.ConsoleColor.Blue"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Green">
+            <summary>
+            <see cref="F:System.ConsoleColor.Green"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Cyan">
+            <summary>
+            <see cref="F:System.ConsoleColor.Cyan"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Red">
+            <summary>
+            <see cref="F:System.ConsoleColor.Red"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Magenta">
+            <summary>
+            <see cref="F:System.ConsoleColor.Magenta"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.Yellow">
+            <summary>
+            <see cref="F:System.ConsoleColor.Yellow"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ColorMap.White">
+            <summary>
+            <see cref="F:System.ConsoleColor.White"/>에 대응되는 색상의 RGB 값을 설정하거나 가져옵니다.
+            </summary>
+        </member>
+        <member name="T:TerraText.ColorMaps.ModernConsoleColor">
+            <summary>
+            현대적인 시스템 콘솔 컬러를 나타냅니다.
+            </summary>
+            <remarks>
+            해당 컬러 목록에 대해서는 'https://devblogs.microsoft.com/commandline/updating-the-windows-console-colors/'를 참조하세요.
+            </remarks>
+        </member>
+        <member name="M:TerraText.ColorMaps.ModernConsoleColor.#ctor">
+            <summary>
+            <see cref="T:TerraText.ColorMaps.ModernConsoleColor"/> 클래스의 새 인스턴스를 초기화합니다.
+            </summary>
+        </member>
+        <member name="T:TerraText.ConsoleEx">
+            <summary>
+            윈도우 콘솔 애플리케이션에 대한 특수 기능을 제공합니다.
+            <see cref="T:System.Console"/>과 병행하여 사용합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.IsSupported">
+            <summary>
+            현재 플랫폼이 확장 기능을 지원할 수 있는지 여부를 나타내는 값을 가져옵니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.ConsoleEx.ReadLineWithCursor">
+            <summary>
+            문자열을 입력 받을 때 커서가 숨겨져 있으면 커서를 표시합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TerraText.ConsoleEx.WaitKeyWithCursor(System.Boolean)">
+            <summary>
+            아무 키 입력을 대기하며 커서를 반드시 표시합니다.
+            </summary>
+            <param name="isFlush">true이면 입력 버퍼를 비워 이전 입력이 영향을 미치는 것을 방지합니다. 기본값은 true입니다.</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.WaitKeyWithCursor(System.ConsoleKey,System.Boolean)">
+            <summary>
+            특정 키 입력을 대기하며 커서를 반드시 표시합니다.
+            </summary>
+            <param name="key">반환 차단을 해제할 키입니다.</param>
+            <param name="isFlush">true이면 입력 버퍼를 비워 이전 입력이 영향을 미치는 것을 방지합니다. 기본값은 true입니다.</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.WaitKey(System.Boolean)">
+            <summary>
+            아무 키 입력을 대기합니다.
+            </summary>
+            <param name="isFlush">true이면 입력 버퍼를 비워 이전 입력이 영향을 미치는 것을 방지합니다. 기본값은 true입니다.</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.WaitKey(System.ConsoleKey,System.Boolean)">
+            <summary>
+            특정 키 입력을 대기합니다.
+            </summary>
+            <param name="key">반환 차단을 해제할 키입니다.</param>
+            <param name="isFlush">true이면 입력 버퍼를 비워 이전 입력이 영향을 미치는 것을 방지합니다. 기본값은 true입니다.</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.IsUserSkip">
+            <summary>
+            루프 문에서 유저가 스킵하기 위해 아무 키를 눌렀는지 확인합니다.
+            </summary>
+            <returns>키를 눌렀으면 true, 누르지 않았으면 false입니다.</returns>
+            <remarks>
+            <para>이 메서드는 콘솔에서 애니메이션 효과를 구현하거나 많은 처리를 필요로 할때 쓰면 좋습니다.</para>
+            <para>만약 이전에 잘못 입력된 키에 영향 받는 것을 방지하려면 루프 직전에 <see cref="M:TerraText.ConsoleEx.ReadFlush"/> 메서드를 호출 하세요.</para>
+            </remarks>
+            <example>
+            <code>
+            ConsoleEx.ReadFlush();
+            while (anotherCondition || ConsoleEx.IsUserSkip())
+            {
+                // code in a loop
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:TerraText.ConsoleEx.IsUserSkip(System.ConsoleKey)">
+            <summary>
+            루프 문에서 유저가 스킵하기 위해 특정 키를 눌렀는지 확인합니다.
+            </summary>
+            <param name="key">스킵하기 위한 키입니다.</param>
+            <returns>키를 눌렀으면 true, 누르지 않았으면 false입니다.</returns>
+            <remarks>
+            <para>이 메서드는 콘솔에서 애니메이션 효과를 구현하거나 많은 처리를 필요로 할때 쓰면 좋습니다.</para>
+            <para>만약 이전에 잘못 입력된 키에 영향 받는 것을 방지하려면 루프 직전에 <see cref="M:TerraText.ConsoleEx.ReadFlush"/> 메서드를 호출 하세요.</para>
+            </remarks>
+            <example>
+            <code>
+            ConsoleEx.ReadFlush();
+            while (anotherCondition || ConsoleEx.IsUserSkip(ConsoleKey.Enter))
+            {
+                // code in a loop
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:TerraText.ConsoleEx.ReadFlush">
+            <summary>
+            콘솔 입력 버퍼를 비웁니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.OffsetLeftOrigin">
+            <summary>
+            현재 저장된 오프셋 커서의 원점 열 위치를 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.OffsetTopOrigin">
+            <summary>
+            현재 저장된 오프셋 커서의 원점 행 위치를 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.OffsetLeft">
+            <summary>
+            버퍼 영역 내에서 오프셋 커서의 열 위치를 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.OffsetTop">
+            <summary>
+            버퍼 영역 내에서 오프셋 커서의 행 위치를 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetOffsetCurrentPosition">
+            <summary>
+            현재 커서 위치를 오프셋 커서의 원점으로 설정합니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetOffsetPosition(System.Int32,System.Int32)">
+            <summary>
+            오프셋 커서의 원점을 설정합니다.
+            </summary>
+            <param name="left">오프셋 커서 원점의 열 위치입니다. 열은 0부터 시작하여 왼쪽부터 오른쪽까지 번호가 지정됩니다.</param>
+            <param name="top">오프셋 커서 원점의 행 위치입니다. 행은 0부터 시작하여 위에서 아래로 번호가 지정됩니다.</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetDefaultColor">
+            <summary>
+            현재 콘솔 색상 팔레트를 지정된 기본값으로 초기화합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.ForegroundPaletteColor">
+            <summary>
+            현재 사용중인 전경색 팔레트의 색상을 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.BackgroundPaletteColor">
+            <summary>
+            현재 사용중인 배경색 팔레트의 색상을 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.AutoForegroundPaletteColor">
+            <summary>
+            일반적으로 기본 전경색으로 사용되는 7번을 제외한 8~15번까지 순회하며 콘솔의 전경색을 가져오거나 설정합니다.
+            </summary>
+            <remarks>
+            <para>콘솔 출력 직후, 너무 빨리 이 프로퍼티를 호출할 경우 호출 전 출력의 색상 값이 같이 변경되는 의도치 않은 현상이 발생할 수 있습니다. 이러한 현상을 방지하려면 이 프로퍼티의 호출을 8회 이하로 제한하고, 출력 후 적절히 블로킹 메서드를 호출하십시오. 이러한 조치 후에도 콘솔 창 리사이즈 등 화면 전체가 다시 그려지면 색상 값이 초기화되어 의도치 않은 색상으로 표시될 수 있습니다.</para>
+            </remarks>
+        </member>
+        <member name="P:TerraText.ConsoleEx.AutoBackgroundPaletteColor">
+            <summary>
+            일반적으로 기본 배경색으로 사용되는 0번을 제외한 1~6번까지 순회하며 콘솔의 배경색을 가져오거나 설정합니다.
+            </summary>
+            <remarks>
+            <para>콘솔 출력 직후, 너무 빨리 이 프로퍼티를 호출할 경우 호출 전 출력의 색상 값이 같이 변경되는 의도치 않은 현상이 발생할 수 있습니다. 이러한 현상을 방지하려면 이 프로퍼티의 호출을 6회 이하로 제한하고, 출력 후 적절히 블로킹 메서드를 호출하십시오. 이러한 조치 후에도 콘솔 창 리사이즈 등 화면 전체가 다시 그려지면 색상 값이 초기화되어 의도치 않은 색상으로 표시될 수 있습니다.</para>
+            </remarks>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetPaletteColor(System.Drawing.Color,System.ConsoleColor)">
+            <summary>
+            지정된 콘솔 컬러 팔레트에 RGB 컬러 값을 설정합니다.
+            </summary>
+            <param name="color">RGB 컬러 값입니다.</param>
+            <param name="PaletteColor">변경할 팔레트의 이름입니다.</param>
+            <remarks>
+            <para>콘솔 출력 직후, 너무 빨리 이 메서드를 호출할 경우 호출 전 출력의 색상 값이 같이 변경되는 의도치 않은 현상이 발생할 수 있습니다. 이러한 현상을 방지하려면 출력 후 적절히 블로킹 메서드를 호출하십시오.</para>
+            </remarks>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetPaletteColor(System.Drawing.Color,System.Int32)">
+            <summary>
+            지정된 콘솔 컬러 팔레트에 RGB 컬러 값을 설정합니다.
+            </summary>
+            <param name="color">RGB 컬러 값입니다.</param>
+            <param name="PaletteNumber">변경할 팔레트의 번호입니다.</param>
+            <remarks>
+            <para>콘솔 출력 직후, 너무 빨리 이 메서드를 호출할 경우 호출 전 출력의 색상 값이 같이 변경되는 의도치 않은 현상이 발생할 수 있습니다. 이러한 현상을 방지하려면 출력 후 적절히 블로킹 메서드를 호출하십시오.</para>
+            </remarks>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetPaletteColors(System.Drawing.Color[])">
+            <summary>
+            RGB 컬러 배열을 콘솔 컬러 팔레트에 설정합니다.
+            </summary>
+            <remarks>
+            <para><paramref name="colors"/>의 각 인덱스는 팔레트 번호에 대응되며 부족한 값은 (0, 0, 0)으로 채워집니다.</para>
+            
+            <para>콘솔 출력 직후, 너무 빨리 이 메서드를 호출할 경우 호출 전 출력의 색상 값이 같이 변경되는 의도치 않은 현상이 발생할 수 있습니다. 이러한 현상을 방지하려면 출력 후 적절히 블로킹 메서드를 호출하십시오.</para>
+            </remarks>
+            <param name="colors">RGB 컬러 값에 대한 목록입니다. 길이가 16이 넘어가면 무시됩니다.</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.GetPaletteColor(System.ConsoleColor)">
+            <summary>
+            지정된 콘솔 컬러 팔레트의 RGB 컬러 값을 가져옵니다.
+            </summary>
+            <param name="PaletteColor">대상 컬러 팔레트입니다.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TerraText.ConsoleEx.GetPaletteColor(System.Int32)">
+            <summary>
+            지정된 콘솔 컬러 팔레트의 RGB 컬러 값을 가져옵니다.
+            </summary>
+            <param name="PaletteNumber">대상 컬러 팔레트입니다.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TerraText.ConsoleEx.GetPaletteColors">
+            <summary>
+            0에서 15번까지의 RGB 컬러 값의 배열을 가져옵니다.
+            </summary>
+            <returns>0에서 15까지의 RGB 컬러 값 배열입니다.</returns>
+        </member>
+        <member name="M:TerraText.ConsoleEx.IsInstalledFont(System.String)">
+            <summary>
+            지정된 폰트 이름이 시스템에 설치된 폰트인지 확인합니다.
+            </summary>
+            <param name="fontName">확인할 폰트 이름입니다.</param>
+            <returns>지정된 폰트 이름이 설치되어 있으면 true를 반환하고 아니면 false를 반환합니다.</returns>
+        </member>
+        <member name="P:TerraText.ConsoleEx.FontName">
+            <summary>
+            폰트 이름을 가져오거나 설정합니다. 설정된 폰트 이름은 콘솔 폰트에 바로 반영됩니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.ConsoleEx.FontSize">
+            <summary>
+            폰트 크기를 가져오거나 설정합니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetFont(System.String[])">
+            <summary>
+            폰트 목록을 이용해 폰트를 변경합니다. 입력된 리스트 중 설치된 폰트가 없으면 시스템 기본 글꼴을 사용합니다.
+            </summary>
+            <param name="fontNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TerraText.ConsoleEx.SetFont(System.String,System.Nullable{System.Int32})">
+            <summary>
+            폰트 이름이나 폰트 크기를 설정합니다.
+            </summary>
+            <param name="fontName">설정할 폰트 이름</param>
+            <param name="fontSize">설정할 폰트 사이즈</param>
+        </member>
+        <member name="M:TerraText.ConsoleEx.GetFont">
+            <summary>
+            폰트 이름과 폰트 사이즈를 가져옵니다.
+            </summary>
+            <returns>폰트 이름과 폰트 사이즈의 튜플입니다.</returns>
+        </member>
+        <member name="T:TerraText.EscapeSequence">
+            <summary>
+            Windows 10 version 1511부터 지원하는 이스케이프 시퀀스를 나타냅니다.
+            </summary>
+            <remarks>
+            <para>이 클래스에서는 텍스트 포매팅에 필요한 SGR(그래픽 변환 선택)에 대한 편의 함수만 구현하고 있습니다. 다른 윈도우 콘솔 호환 이스케이프 시퀀스에 관해서는 'https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences'를 참조하세요.</para>
+            <para>Windows 10 version 1511 이하의 윈도우 콘솔에서는 이스케이프 시퀀스에 반응하지 않기 때문에 사용자에게 적절히 안내하거나 다른 방법을 찾아야합니다.</para>
+            </remarks>
+        </member>
+        <member name="F:TerraText.EscapeSequence.EscapeChar">
+            <summary>
+            ASCII와 Unicode의 이스케이프 문자입니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SelectGraphicsReditionSuffix">
+            <summary>
+            SGR의 접미사입니다.
+            </summary>
+        </member>
+        <member name="T:TerraText.EscapeSequence.SGRParameter">
+            <summary>
+            SGR(그래픽 변환 선택)의 파라미터를 나열합니다. 윈도우 콘솔과 호환되지 않는 요소는 제외되어 있습니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.Default">
+            <summary>
+            수정하기 전에 모든 특성을 기본 상태로 반환합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.Bright">
+            <summary>
+            전경 색상에 밝기/강도 플래그를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.Underline">
+            <summary>
+            밑줄을 추가합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.NoUnderline">
+            <summary>
+            밑줄을 제거합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.Negative">
+            <summary>
+            전경색과 배경색을 치환합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.Positive">
+            <summary>
+            치환된 전경색과 배경색을 정상화합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundBlack">
+            <summary>
+            전경색으로 검은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundRed">
+            <summary>
+            전경색으로 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundGreen">
+            <summary>
+            전경색으로 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundYellow">
+            <summary>
+            전경색으로 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundBlue">
+            <summary>
+            전경색으로 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundMagenta">
+            <summary>
+            전경색으로 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundCyan">
+            <summary>
+            전경색으로 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundWhite">
+            <summary>
+            전경색으로 하얀색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.ForegroundDefault">
+            <summary>
+            전경색을 기본값으로 되돌립니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundBlack">
+            <summary>
+            배경색으로 검은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundRed">
+            <summary>
+            배경색으로 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundGreen">
+            <summary>
+            배경색으로 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundYellow">
+            <summary>
+            배경색으로 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundBlue">
+            <summary>
+            배경색으로 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundMagenta">
+            <summary>
+            배경색으로 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundCyan">
+            <summary>
+            배경색으로 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundWhite">
+            <summary>
+            배경색으로 하얀색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BackgroundDefault">
+            <summary>
+            배경색을 기본값으로 되돌립니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundBlack">
+            <summary>
+            전경색으로 밝은 검은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundRed">
+            <summary>
+            전경색으로 밝은 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundGreen">
+            <summary>
+            전경색으로 밝은 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundYellow">
+            <summary>
+            전경색으로 밝은 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundBlue">
+            <summary>
+            전경색으로 밝은 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundMagenta">
+            <summary>
+            전경색으로 밝은 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundCyan">
+            <summary>
+            전경색으로 밝은 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightForegroundWhite">
+            <summary>
+            전경색으로 밝은 하얀색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundBlack">
+            <summary>
+            배경색으로 밝은 검은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundRed">
+            <summary>
+            배경색으로 밝은 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundGreen">
+            <summary>
+            배경색으로 밝은 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundYellow">
+            <summary>
+            배경색으로 밝은 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundBlue">
+            <summary>
+            배경색으로 밝은 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundMagenta">
+            <summary>
+            배경색으로 밝은 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundCyan">
+            <summary>
+            배경색으로 밝은 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.EscapeSequence.SGRParameter.BrightBackgroundWhite">
+            <summary>
+            배경색으로 밝은 하얀색을 적용합니다.
+            </summary>
+        </member>
+        <member name="T:TerraText.SGR">
+            <summary>
+            SGR(그래픽 변환 선택)에 빠른 접근을 위한 유틸리티입니다. 일부는 축약되어 표현되며 자세한 내용은 설명(remarks)을 참조하세요.
+            </summary>
+            <remarks>
+            <para>Foreground는 색 명칭만 쓰고 Background는 마지막에 _(언더바)를 붙입니다. 색 명칭은 <see cref="T:System.ConsoleColor"/>를 따릅니다.</para>
+            </remarks>
+        </member>
+        <member name="F:TerraText.SGR.Default">
+            <summary>
+            모든 특성을 기본 상태로 되돌립니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Underline">
+            <summary>
+            밑줄을 추가합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.NoUnderline">
+            <summary>
+            밑줄을 제거합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Negative">
+            <summary>
+            전경색과 배경색을 치환합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Positive">
+            <summary>
+            전경색과 배경색을 치환합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Black">
+            <summary>
+            전경색으로 검은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkBlue">
+            <summary>
+            전경색으로 어두운 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkGreen">
+            <summary>
+            전경색으로 어두운 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkCyan">
+            <summary>
+            전경색으로 어두운 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkRed">
+            <summary>
+            전경색으로 어두운 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkMagenta">
+            <summary>
+            전경색으로 어두운 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkYellow">
+            <summary>
+            전경색으로 어두운 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Gray">
+            <summary>
+            전경색으로 회색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkGray">
+            <summary>
+            전경색으로 어두운 회색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Blue">
+            <summary>
+            전경색으로 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Green">
+            <summary>
+            전경색으로 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Cyan">
+            <summary>
+            전경색으로 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Red">
+            <summary>
+            전경색으로 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Magenta">
+            <summary>
+            전경색으로 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Yellow">
+            <summary>
+            전경색으로 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.White">
+            <summary>
+            전경색으로 하얀색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DefaultColor">
+            <summary>
+            전경색을 기본값으로 되돌립니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Black_">
+            <summary>
+            배경색으로 검은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkBlue_">
+            <summary>
+            배경색으로 어두운 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkGreen_">
+            <summary>
+            배경색으로 어두운 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkCyan_">
+            <summary>
+            배경색으로 어두운 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkRed_">
+            <summary>
+            배경색으로 어두운 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkMagenta_">
+            <summary>
+            배경색으로 어두운 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkYellow_">
+            <summary>
+            배경색으로 어두운 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Gray_">
+            <summary>
+            배경색으로 회색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DarkGray_">
+            <summary>
+            배경색으로 어두운 회색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Blue_">
+            <summary>
+            배경색으로 파란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Green_">
+            <summary>
+            배경색으로 초록색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Cyan_">
+            <summary>
+            배경색으로 시안을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Red_">
+            <summary>
+            배경색으로 붉은색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Magenta_">
+            <summary>
+            배경색으로 마젠타를 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.Yellow_">
+            <summary>
+            배경색으로 노란색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.White_">
+            <summary>
+            배경색으로 하얀색을 적용합니다.
+            </summary>
+        </member>
+        <member name="F:TerraText.SGR.DefaultColor_">
+            <summary>
+            배경색을 기본값으로 되돌립니다.
+            </summary>
+        </member>
+        <member name="T:TerraText.SceneManager">
+            <summary>
+            게임 씬 관리자를 나타냅니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.SceneManager.IsRun">
+            <summary>
+            게임 씬 관리의 실행 여부를 나타내는 값을 가져옵니다. 실행 중이면 true입니다.
+            </summary>
+        </member>
+        <member name="P:TerraText.SceneManager.CurrentSceneDepth">
+            <summary>
+            현재 실행 중인 씬의 계층 깊이를 가져옵니다. 계층 깊이는 0부터 시작하며 실행 중이 아닌 경우 -1을 반환합니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.SceneManager.Run(TerraText.Scene)">
+            <summary>
+            게임 씬 관리를 실행합니다.
+            </summary>
+            <param name="rootScene"></param>
+        </member>
+        <member name="M:TerraText.SceneManager.ReserveExit">
+            <summary>
+            게임 씬 관리 종료를 예약합니다.
+            </summary>
+        </member>
+        <member name="M:TerraText.SceneManager.ReserveChildScene(TerraText.Scene)">
+            <summary>
+            자식 씬을 예약합니다. 자식 씬이 종료되면 부모 씬을 다시 실행합니다.
+            </summary>
+            <param name="scene"></param>
+        </member>
+    </members>
+</doc>
