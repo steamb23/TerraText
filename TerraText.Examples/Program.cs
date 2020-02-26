@@ -17,6 +17,7 @@ namespace TerraText.Examples
                 Console.WriteLine("1.색상 변경");
                 Console.WriteLine("2.글꼴 변경");
                 Console.WriteLine("3.이스케이프 시퀀스");
+                Console.WriteLine("4.정렬 출력");
                 Console.Write(">");
                 if (int.TryParse(ConsoleEx.ReadLineWithCursor(), out var input))
                 {
@@ -30,6 +31,9 @@ namespace TerraText.Examples
                             break;
                         case 3:
                             Example.EscapeSequenceExample();
+                            break;
+                        case 4:
+                            Example.AlignedWriteExample();
                             break;
                     }
                 }

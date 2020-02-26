@@ -43,6 +43,69 @@ namespace TerraText
         }
         #endregion
 
+        public static void AlignedWrite(string value, TextAlign textAlign = TextAlign.Left, int length = 0)
+        {
+            var textWidth = UnicodeWidth.GetWidth(value);
+
+            // textWidth나 length 중 더 큰쪽으로 길이를 갱신한다.
+            length = Math.Max(length, UnicodeWidth.GetWidth(value));
+
+            switch (textAlign)
+            {
+                case TextAlign.Left:
+                    {
+                        // 값을 출력한다.
+                        Console.Write(value);
+
+                        // 빈 공간을 계산한다.
+                        var space = length - textWidth;
+
+                        // 빈 공간을 채운다.
+                        for (var i = 0; i < space; i++)
+                        {
+                            Console.Write(' ');
+                        }
+                    }
+                    break;
+                case TextAlign.Center:
+                    {
+                        // 좌측 빈 공간을 계산한다.
+                        var leftSpace = (length - textWidth) / 2;
+                        // 우측 빈 공간을 계산한다.
+                        var rightSpace = length - leftSpace - textWidth;
+
+                        // 좌측 빈공간을 채운다.
+                        for (var i = 0; i < leftSpace; i++)
+                        {
+                            Console.Write(' ');
+                        }
+                        // 값을 출력한다.
+                        Console.Write(value);
+                        // 우측 빈공간을 채운다.
+                        for (var i = 0; i < rightSpace; i++)
+                        {
+                            Console.Write(' ');
+                        }
+                    }
+                    break;
+                case TextAlign.Right:
+                    {
+                        // 빈 공간을 계산한다.
+                        var space = length - textWidth;
+
+                        // 빈 공간을 채운다.
+                        for (var i = 0; i < space; i++)
+                        {
+                            Console.Write(' ');
+                        }
+
+                        // 값을 출력한다.
+                        Console.Write(value);
+                    }
+                    break;
+            }
+        }
+
         #region 입력 관련 멤버
         /// <summary>
         /// 문자열을 입력 받을 때 커서가 숨겨져 있으면 커서를 표시합니다.

@@ -157,5 +157,23 @@ namespace TerraText.Examples
             Console.WriteLine($"{SGR.Underline}언더라인{SGR.Default}, {SGR.DarkRed}색상 변경{SGR.Default}, {SGR.Negative}전경색 배경색 치환{SGR.Default} 등을 출력과 함께 동시 처리할 수 있습니다.");
             ConsoleEx.WaitKeyWithCursor();
         }
+
+        public static void AlignedWriteExample()
+        {
+            Console.Clear();
+            Console.WriteLine(SGR.Negative);
+            string text = "ㅁ";
+            Console.CursorLeft = 10;
+            ConsoleEx.AlignedWrite(text, TextAlign.Left, 6);
+            Console.WriteLine();
+            Console.CursorLeft = 10;
+            ConsoleEx.AlignedWrite(text, TextAlign.Center, 6);
+            Console.WriteLine();
+            Console.CursorLeft = 10;
+            ConsoleEx.AlignedWrite(text, TextAlign.Right, 6);
+            Console.WriteLine(SGR.Positive);
+
+            ConsoleEx.WaitKeyWithCursor();
+        }
     }
 }
