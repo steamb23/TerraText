@@ -714,8 +714,9 @@ namespace TerraText
                 Output = -11,
                 Error = -12
             }
+
             [Flags]
-            internal enum FontFamilyTypes : int
+            internal enum FontFamilyTypes : uint
             {
                 FixedPitch = 0x1,
                 Vector = 0x2,
