@@ -273,6 +273,8 @@ namespace TerraText
                 case TextAlign.Right:
                     Console.CursorLeft -= Math.Max(textWidth, 0);
                     Console.Write(value);
+                    if (isManagedCursor)
+                        Console.CursorLeft -= Math.Max(textWidth, 0);
                     break;
             }
         }
