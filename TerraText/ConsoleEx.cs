@@ -84,14 +84,14 @@ namespace TerraText
         /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
         public static void BlockWrite(ulong value, TextAlign textAlign = TextAlign.Left, int length = 0) => BlockWrite(value.ToString(), textAlign, length);
         /// <summary>
-        /// 현재 위치와 지정한 길이 안에서 지정한 단정밀도 부동소수점 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// 현재 위치와 지정한 길이 안에서 지정한 단정밀도 부동 소수점 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
         /// </summary>
         /// <param name="value">출력할 단정밀도 부동소수점 값입니다.</param>
         /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
         /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
         public static void BlockWrite(float value, TextAlign textAlign = TextAlign.Left, int length = 0) => BlockWrite(value.ToString(), textAlign, length);
         /// <summary>
-        /// 현재 위치와 지정한 길이 안에서 지정한 배정밀도 부동소수점 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// 현재 위치와 지정한 길이 안에서 지정한 배정밀도 부동 소수점 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
         /// </summary>
         /// <param name="value">출력할 배정밀도 부동소수점 값입니다.</param>
         /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
@@ -107,12 +107,12 @@ namespace TerraText
         #endregion
 
         /// <summary>
-        /// 현재 위치와 지정한 길이 안에서 지정한 문자열을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// 현재 위치와 지정한 길이 안에서 지정한 문자열을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시되며 남은 영역은 빈 공간으로 채워집니다.
         /// </summary>
         /// <param name="value">출력할 문자열입니다.</param>
         /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
         /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
-        public static void BlockWrite(string value, TextAlign textAlign = TextAlign.Left, int length = 0)
+        public static void BlockWrite(string value, TextAlign textAlign, int length = 0)
         {
             var textWidth = UnicodeWidth.GetWidth(value);
 
@@ -171,6 +171,108 @@ namespace TerraText
                         // 값을 출력한다.
                         Console.Write(value);
                     }
+                    break;
+            }
+        }
+
+        #region AlignedWrite 오버로딩 메서드
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 부호있는 32비트 정수 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 부호있는 32비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(int value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 부호없는 32비트 정수 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 부호없는 32비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(uint value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 부호있는 64비트 정수 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 부호있는 64비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(long value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 부호없는 64비트 정수 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 부호없는 64비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(ulong value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 단정밀도 부동 소수점 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 단정밀도 부동 소수점 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(float value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 배정밀도 부동 소수점 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 배정밀도 부동 소수점 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(double value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 부울 값의 텍스트 표현을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 부울 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(bool value, TextAlign textAlign, bool isManagedCursor = false) => AlignedWrite(value.ToString(), textAlign, isManagedCursor);
+        #endregion
+
+        /// <summary>
+        /// 현재 위치를 원점으로 하여 문자열을 정렬해 출력합니다.
+        /// </summary>
+        /// <remarks>
+        /// <para>오른쪽에서 출력하고나서 커서를 출력된 텍스트의 왼쪽에 오게 하려면 <paramref name="isManagedCursor"/>를 True로 설정해주세요.</para>
+        /// </remarks>
+        /// <param name="value">출력할 문자열입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다.</param>
+        /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
+        public static void AlignedWrite(string value, TextAlign textAlign, bool isManagedCursor = false)
+        {
+            var textWidth = UnicodeWidth.GetWidth(value);
+
+            switch (textAlign)
+            {
+                case TextAlign.Left:
+                    Console.Write(value);
+                    break;
+                case TextAlign.Center:
+                    Console.CursorLeft -= Math.Max(textWidth / 2, 0);
+                    Console.Write(value);
+                    break;
+                case TextAlign.Right:
+                    Console.CursorLeft -= Math.Max(textWidth, 0);
+                    Console.Write(value);
                     break;
             }
         }
