@@ -15,10 +15,10 @@ namespace TerraText
     {
         static EscapeSequence()
         {
-            ConsoleEx.ConsoleMode |= ConsoleModeFlags.EnableVirtualTerminalProcessing;
+            ConsoleEx.ConsoleOutputMode |= ConsoleOutputModeFlags.EnableVirtualTerminalProcessing;
         }
 
-        public static bool IsSupported => ConsoleEx.ConsoleMode.HasFlag(ConsoleModeFlags.EnableVirtualTerminalProcessing);
+        public static bool IsSupported => ConsoleEx.ConsoleOutputMode.HasFlag(ConsoleOutputModeFlags.EnableVirtualTerminalProcessing);
 
         /// <summary>
         /// ASCII와 Unicode의 이스케이프 문자입니다.

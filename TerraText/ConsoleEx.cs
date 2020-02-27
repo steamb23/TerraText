@@ -44,11 +44,11 @@ namespace TerraText
         #endregion
 
         /// <summary>
-        /// 현재 콘솔 모드를 나타내는 플래그를 가져오거나 설정합니다.
+        /// 현재 콘솔 출력 모드를 나타내는 플래그를 가져오거나 설정합니다.
         /// </summary>
-        public static ConsoleModeFlags ConsoleMode
+        public static ConsoleOutputModeFlags ConsoleOutputMode
         {
-            get => Win32Native.GetConsoleMode(StdOutputHandle, out var mode) ? (ConsoleModeFlags)mode : 0;
+            get => Win32Native.GetConsoleMode(StdOutputHandle, out var mode) ? (ConsoleOutputModeFlags)mode : 0;
             set => Win32Native.SetConsoleMode(StdOutputHandle, (uint)value);
         }
 
