@@ -18,6 +18,9 @@ namespace TerraText
             ConsoleEx.ConsoleOutputMode |= ConsoleOutputModeFlags.EnableVirtualTerminalProcessing;
         }
 
+        /// <summary>
+        /// 현재 시스템이 이스케이프 시퀀스를 지원하는지에 대한 여부를 가져옵니다.
+        /// </summary>
         public static bool IsSupported => ConsoleEx.ConsoleOutputMode.HasFlag(ConsoleOutputModeFlags.EnableVirtualTerminalProcessing);
 
         /// <summary>
@@ -204,6 +207,11 @@ namespace TerraText
             /// </summary>
             BrightBackgroundWhite = 107,
         }
+        /// <summary>
+        /// 문자열에서 이스케이프 시퀀스 문자를 제거합니다.
+        /// </summary>
+        /// <param name="value">이스케이프 시퀀스 문자를 포함한 문자열입니다.</param>
+        /// <returns></returns>
         public static string RemoveSequence(string value)
         {
             var stringBuilder = new StringBuilder();
@@ -232,13 +240,23 @@ namespace TerraText
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// 주어진 정수 값에서 완전한 이스케이프 시퀀스를 가져옵니다.
+        /// </summary>
+        /// <param name="param">SGR 매개변수의 인덱스입니다.</param>
+        /// <returns></returns>
         public static string SGR(int param)
         {
             // \u001b[<n>m
             return "\u001b[" + param + "m";
         }
 
-        public static string SGR(SGRParameter param) => SGR((int)param);
+        /// <summary>
+        /// SGRParameter에서 완전한 이스케이프 시퀀스를 가져옵니다.
+        /// </summary>
+        /// <param name="param">SGR 매개변수입니다.</param>
+        /// <returns></returns>
+        public static string SGR(this SGRParameter param) => SGR((int)param);
     }
 
     /// <summary>
