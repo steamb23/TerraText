@@ -6,7 +6,7 @@ namespace TerraText
 {
 
     [Flags]
-    public enum ConsoleMode : uint
+    public enum ConsoleModeFlags : uint
     {
         EnableProcessedOutput = 0x0001,
         EnableWrapAtEOLOutput = 0x0002,

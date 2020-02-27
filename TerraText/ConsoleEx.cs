@@ -46,9 +46,9 @@ namespace TerraText
         /// <summary>
         /// 현재 콘솔 모드를 나타내는 플래그를 가져오거나 설정합니다.
         /// </summary>
-        public static ConsoleMode ConsoleMode
+        public static ConsoleModeFlags ConsoleMode
         {
-            get => Win32Native.GetConsoleMode(StdOutputHandle, out var mode) ? (ConsoleMode)mode : 0;
+            get => Win32Native.GetConsoleMode(StdOutputHandle, out var mode) ? (ConsoleModeFlags)mode : 0;
             set => Win32Native.SetConsoleMode(StdOutputHandle, (uint)value);
         }
 
