@@ -52,12 +52,64 @@ namespace TerraText
             set => Win32Native.SetConsoleMode(StdOutputHandle, (uint)value);
         }
 
+        #region AlignedWrite 오버로딩 메서드
         /// <summary>
-        /// 
+        /// 현재 위치와 지정한 길이 안에서 지정한 부호 있는 32비트 정수 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="textAlign"></param>
-        /// <param name="length"></param>
+        /// <param name="value">출력할 부호 있는 32비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(int value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 부호 없는 32비트 정수 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 부호 없는 32비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(uint value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 부호 있는 64비트 정수 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 부호 있는 64비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(long value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 부호 없는 64비트 정수 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 부호 없는 64비트 정수 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(ulong value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 단정밀도 부동소수점 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 단정밀도 부동소수점 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(float value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 배정밀도 부동소수점 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 배정밀도 부동소수점 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(double value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 부울 값의 텍스트 표현을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 부울 값입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
+        public static void AlignedWrite(bool value, TextAlign textAlign = TextAlign.Left, int length = 0) => AlignedWrite(value.ToString(), textAlign, length);
+        #endregion
+
+        /// <summary>
+        /// 현재 위치와 지정한 길이 안에서 지정한 문자열을 정렬해 출력합니다. 지정된 길이가 문자열의 길이보다 짧으면 무시됩니다.
+        /// </summary>
+        /// <param name="value">출력할 문자열입니다.</param>
+        /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
+        /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
         public static void AlignedWrite(string value, TextAlign textAlign = TextAlign.Left, int length = 0)
         {
             var textWidth = UnicodeWidth.GetWidth(value);
