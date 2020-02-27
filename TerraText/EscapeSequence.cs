@@ -13,6 +13,13 @@ namespace TerraText
     /// </remarks>
     public static class EscapeSequence
     {
+        static EscapeSequence()
+        {
+            ConsoleEx.ConsoleMode |= ConsoleMode.EnableVirtualTerminalProcessing;
+        }
+
+        public static bool IsSupported => ConsoleEx.ConsoleMode.HasFlag(ConsoleMode.EnableVirtualTerminalProcessing);
+
         /// <summary>
         /// ASCII와 Unicode의 이스케이프 문자입니다.
         /// </summary>
