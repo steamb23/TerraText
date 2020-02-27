@@ -167,7 +167,7 @@ namespace TerraText.Examples
             ConsoleEx.WaitKeyWithCursor();
         }
 
-        public static void AlignedWriteExample()
+        public static void BlockWriteExample()
         {
             Console.Clear();
             Console.WriteLine($"현재 CJK 모드의 상태는 {UnicodeWidth.IsModeCJK} 입니다.");
@@ -194,16 +194,16 @@ namespace TerraText.Examples
 
             Console.WriteLine(SGR.Negative);
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite("가나다라마바사", TextAlign.Left, length);
+            ConsoleEx.BlockWrite("가나다라마바사", TextAlign.Left, length);
             Console.WriteLine();
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite(text, TextAlign.Left, length);
+            ConsoleEx.BlockWrite(text, TextAlign.Left, length);
             Console.WriteLine();
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite(text, TextAlign.Center, length);
+            ConsoleEx.BlockWrite(text, TextAlign.Center, length);
             Console.WriteLine();
             Console.CursorLeft = 10;
-            ConsoleEx.AlignedWrite(text, TextAlign.Right, length);
+            ConsoleEx.BlockWrite(text, TextAlign.Right, length);
             Console.WriteLine(SGR.Positive);
 
             ConsoleEx.WaitKeyWithCursor();

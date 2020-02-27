@@ -33,7 +33,7 @@ namespace TerraText.Examples
                             Example.EscapeSequenceExample();
                             break;
                         case 4:
-                            Example.AlignedWriteExample();
+                            Example.BlockWriteExample();
                             break;
                     }
                 }
