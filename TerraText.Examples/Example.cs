@@ -152,6 +152,15 @@ namespace TerraText.Examples
         public static void EscapeSequenceExample()
         {
             Console.Clear();
+            if (ESC.IsSupported)
+            {
+                Console.WriteLine("현재 모드는 이스케이프 시퀀스를 지원합니다.");
+            }
+            else
+            {
+
+                Console.WriteLine("현재 모드는 이스케이프 시퀀스를 지원하지 않습니다.");
+            }
             Console.WriteLine($"윈도우 10 버전 1511의 콘솔부터 지원하기 시작한 {SGR.Underline}이스케이프 시퀀스{SGR.NoUnderline}를 간편하게 사용할 수 있습니다.");
             ConsoleEx.WaitKeyWithCursor();
             Console.WriteLine($"{SGR.Underline}언더라인{SGR.Default}, {SGR.DarkRed}색상 변경{SGR.Default}, {SGR.Negative}전경색 배경색 치환{SGR.Default} 등을 출력과 함께 동시 처리할 수 있습니다.");
@@ -161,10 +170,10 @@ namespace TerraText.Examples
         public static void AlignedWriteExample()
         {
             Console.Clear();
-
             Console.WriteLine($"현재 CJK 모드의 상태는 {UnicodeWidth.IsModeCJK} 입니다.");
-            Console.WriteLine($"현재 설정된 콘솔의 글꼴이 '굴림체'거나 '돋움체', 'MS Gothic'이면 true여야합니다.");
-            Console.WriteLine($"true나 false를 입력하여 설정해주세요.");
+            Console.WriteLine("현재 설정된 콘솔의 글꼴이 '굴림체'거나 '돋움체', 'MS Gothic'이면 true여야합니다.");
+            Console.WriteLine("만약 이 설정이 글꼴과 맞지 않으면 일부 문자 표현에 차이가 발생 할 수 있습니다.");
+            Console.WriteLine("true나 false를 입력하여 설정해주세요.");
             if (bool.TryParse(ConsoleEx.ReadLineWithCursor(), out var isModeCJK))
             {
                 UnicodeWidth.IsModeCJK = isModeCJK;
@@ -174,6 +183,7 @@ namespace TerraText.Examples
             {
                 Console.WriteLine("현재 상태를 유지합니다.");
             }
+            Console.WriteLine();
             Console.WriteLine("출력할 문장을 입력해주세요. (기본값 : 다람쥐 헌 쳇바퀴에 타고파◆)");
             var text = ConsoleEx.ReadLineWithCursor();
             if (string.IsNullOrEmpty(text))
