@@ -9,6 +9,9 @@ namespace TerraText.UI.Exclusive
     /// </summary>
     public abstract class ExclusiveUIBase
     {
+        /// <summary>
+        /// <see cref="ExclusiveUIBase"/> 클래스의 새 인스턴스를 초기화합니다.
+        /// </summary>
         public ExclusiveUIBase()
         {
 

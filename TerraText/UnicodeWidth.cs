@@ -63,6 +63,9 @@ using System.Linq;
 
 namespace TerraText
 {
+    /// <summary>
+    /// 특정 유니코드 문자의 글자 폭에 대한 검사 도구를 나타냅니다.
+    /// </summary>
     public static class UnicodeWidth
     {
         struct Interval
