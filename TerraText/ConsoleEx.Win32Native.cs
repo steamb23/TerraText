@@ -9,6 +9,9 @@ namespace TerraText
         internal static class Win32Native
         {
             #region kernal32.dll Console Functions
+            [DllImport("kernel32")]
+            internal static extern void CloseHandle(IntPtr hObject);
+
             // http://pinvoke.net/default.aspx/kernel32/AddConsoleAlias.html
             [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern bool AddConsoleAlias(
