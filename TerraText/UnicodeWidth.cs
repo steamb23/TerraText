@@ -249,11 +249,10 @@ namespace TerraText
         /// <returns>전각 길이, 반각 길이가 반영된 문장 길이입니다.</returns>
         public static int GetWidthNonCJK(string text)
         {
-            var w = 0;
             int width = 0;
             for (int i = 0; i < text.Length; i++)
             {
-                w = GetWidthNonCJK(text[i]);
+                int w = GetWidthNonCJK(text[i]);
                 if (w < 0)
                 {
                     return -1;
@@ -349,11 +348,10 @@ namespace TerraText
         /// <returns>전각 길이, 반각 길이가 반영된 문장 길이입니다.</returns>
         public static int GetWidthCJK(string text)
         {
-            var w = 0;
             int width = 0;
             for (int i = 0; i < text.Length; i++)
             {
-                w = GetWidthCJK(text[i]);
+                int w = GetWidthCJK(text[i]);
                 if (w < 0)
                 {
                     return -1;

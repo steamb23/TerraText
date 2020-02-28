@@ -642,9 +642,11 @@ namespace TerraText
 
                 internal WINDOW_BUFFER_SIZE_RECORD(short x, short y)
                 {
-                    dwSize = new COORD();
-                    dwSize.X = x;
-                    dwSize.Y = y;
+                    dwSize = new COORD
+                    {
+                        X = x,
+                        Y = y
+                    };
                 }
             }
 
@@ -667,27 +669,27 @@ namespace TerraText
             internal struct CHAR_INFO
             {
                 [FieldOffset(0)]
-                char UnicodeChar;
+                internal char UnicodeChar;
                 [FieldOffset(0)]
-                char AsciiChar;
+                internal char AsciiChar;
                 [FieldOffset(2)] //2 bytes seems to work properly
-                UInt16 Attributes;
+                internal ushort Attributes;
             }
 
             [StructLayout(LayoutKind.Sequential)]
             internal struct CONSOLE_CURSOR_INFO
             {
-                uint Size;
-                bool Visible;
+                internal uint Size;
+                internal bool Visible;
             }
 
             [StructLayout(LayoutKind.Sequential)]
             internal struct CONSOLE_HISTORY_INFO
             {
-                ushort cbSize;
-                ushort HistoryBufferSize;
-                ushort NumberOfHistoryBuffers;
-                uint dwFlags;
+                internal ushort cbSize;
+                internal ushort HistoryBufferSize;
+                internal ushort NumberOfHistoryBuffers;
+                internal uint dwFlags;
                 internal static CONSOLE_HISTORY_INFO Create()
                 {
                     return new CONSOLE_HISTORY_INFO { cbSize = (ushort)Marshal.SizeOf<CONSOLE_HISTORY_INFO>() };
@@ -697,16 +699,16 @@ namespace TerraText
             [StructLayout(LayoutKind.Sequential)]
             internal struct CONSOLE_SELECTION_INFO
             {
-                uint Flags;
-                COORD SelectionAnchor;
-                SMALL_RECT Selection;
+                internal uint Flags;
+                internal COORD SelectionAnchor;
+                internal SMALL_RECT Selection;
 
                 // Flags values:
-                const uint CONSOLE_MOUSE_DOWN = 0x0008; // Mouse is down
-                const uint CONSOLE_MOUSE_SELECTION = 0x0004; //Selecting with the mouse
-                const uint CONSOLE_NO_SELECTION = 0x0000; //No selection
-                const uint CONSOLE_SELECTION_IN_PROGRESS = 0x0001; //Selection has begun
-                const uint CONSOLE_SELECTION_NOT_EMPTY = 0x0002; //Selection rectangle is not empty
+                internal const uint CONSOLE_MOUSE_DOWN = 0x0008; // Mouse is down
+                internal const uint CONSOLE_MOUSE_SELECTION = 0x0004; //Selecting with the mouse
+                internal const uint CONSOLE_NO_SELECTION = 0x0000; //No selection
+                internal const uint CONSOLE_SELECTION_IN_PROGRESS = 0x0001; //Selection has begun
+                internal const uint CONSOLE_SELECTION_NOT_EMPTY = 0x0002; //Selection rectangle is not empty
             }
 
             internal static readonly IntPtr InvalidHandleValue = new IntPtr(-1);

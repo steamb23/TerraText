@@ -10,7 +10,7 @@ namespace TerraText
     /// </summary>
     public sealed class SceneManager
     {
-        private Stack<Scene> sceneStack = new Stack<Scene>();
+        private readonly Stack<Scene> sceneStack = new Stack<Scene>();
         //private Scene? rootScene = null;
         private enum ReserveSceneMode
         {
