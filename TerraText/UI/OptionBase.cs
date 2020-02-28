@@ -12,23 +12,23 @@ namespace TerraText.UI
     {
 
         /// <summary>
-        /// 유저가 선택한 값을 가져옵니다. 선택된 값이 없으면 -1입니다.
+        /// 유저가 선택한 값을 가져오거나 설정합니다. 기본값은 0입니다.
         /// </summary>
         public int Result
         {
             get;
-            protected set;
-        } = -1;
+            set;
+        } = 0;
 
         /// <summary>
         /// 옵션으로 출력될 텍스트의 목록입니다.
         /// </summary>
-        public IReadOnlyCollection<string> Items { get; }
+        public IReadOnlyList<string> Items { get; }
 
         /// <summary>
         /// 옵션으로 출력될 텍스트의 목록으로 <see cref="OptionBase"/> 클래스를 초기화합니다.
         /// </summary>
-        /// <param name="items"></param>
+        /// <param name="items">옵션으로 출력될 텍스트의 목록입니다.</param>
         protected OptionBase(params string[] items)
         {
             Items = items;

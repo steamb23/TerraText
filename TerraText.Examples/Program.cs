@@ -7,6 +7,7 @@ namespace TerraText.Examples
     {
         static void Main(string[] args)
         {
+            var option = new UI.Option(30, "1.색상 변경", "2.글꼴 변경", "3.이스케이프 시퀀스", "4.정렬 출력");
             while (true)
             {
                 Console.CursorVisible = false;
@@ -14,28 +15,22 @@ namespace TerraText.Examples
                 Console.Clear();
 
                 Console.WriteLine("실행할 예제를 선택하세요.");
-                Console.WriteLine("1.색상 변경");
-                Console.WriteLine("2.글꼴 변경");
-                Console.WriteLine("3.이스케이프 시퀀스");
-                Console.WriteLine("4.정렬 출력");
-                Console.Write(">");
-                if (int.TryParse(ConsoleEx.ReadLineWithCursor(), out var input))
+                option.SetBasePosition();
+                option.Show();
+                switch (option.Result+1)
                 {
-                    switch (input)
-                    {
-                        case 1:
-                            Example.ColorChange();
-                            break;
-                        case 2:
-                            Example.FontChange();
-                            break;
-                        case 3:
-                            Example.EscapeSequenceExample();
-                            break;
-                        case 4:
-                            Example.BlockWriteExample();
-                            break;
-                    }
+                    case 1:
+                        Example.ColorChange();
+                        break;
+                    case 2:
+                        Example.FontChange();
+                        break;
+                    case 3:
+                        Example.EscapeSequenceExample();
+                        break;
+                    case 4:
+                        Example.BlockWriteExample();
+                        break;
                 }
             }
 

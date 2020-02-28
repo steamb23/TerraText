@@ -112,7 +112,7 @@ namespace TerraText
         /// <param name="value">출력할 문자열입니다.</param>
         /// <param name="textAlign">정렬할 위치입니다. 기본값은 왼쪽입니다.</param>
         /// <param name="length">정렬 기준으로 사용되는 길이입니다. 기본값은 0입니다.</param>
-        public static void BlockWrite(string value, TextAlign textAlign, int length = 0)
+        public static void BlockWrite(string value, TextAlign textAlign = TextAlign.Left, int length = 0)
         {
             var textWidth = UnicodeWidth.GetWidth(value);
 

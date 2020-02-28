@@ -20,6 +20,10 @@ namespace TerraText.UI
         /// <summary>
         /// 기준점의 위치를 설정합니다.
         /// </summary>
+        public void SetBasePosition() => SetBasePosition(Console.CursorLeft, Console.CursorTop);
+        /// <summary>
+        /// 기준점의 위치를 설정합니다.
+        /// </summary>
         /// <param name="left">기준점의 열 위치입니다.</param>
         /// <param name="top">기준점의 행 위치입니다.</param>
         public void SetBasePosition(int left, int top)
