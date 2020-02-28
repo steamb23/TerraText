@@ -33,11 +33,11 @@ namespace TerraText
             // http://pinvoke.net/default.aspx/kernel32/CreateConsoleScreenBuffer.html
             [DllImport("kernel32.dll", SetLastError = true)]
             internal static extern IntPtr CreateConsoleScreenBuffer(
-                uint dwDesiredAccess,
-                uint dwShareMode,
-                IntPtr lpSecurityAttributes,
-                uint dwFlags,
-                IntPtr lpScreenBufferData
+                uint dwDesiredAccess = 0,
+                uint dwShareMode = 0,
+                IntPtr lpSecurityAttributes = default,
+                uint dwFlags = 1,
+                IntPtr lpScreenBufferData = default
                 );
 
             // http://pinvoke.net/default.aspx/kernel32/FillConsoleOutputAttribute.html
