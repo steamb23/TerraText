@@ -24,6 +24,11 @@ namespace TerraText.UI
         /// 옵션으로 출력될 텍스트의 목록입니다.
         /// </summary>
         public IReadOnlyCollection<string> Items { get; }
+
+        /// <summary>
+        /// 옵션으로 출력될 텍스트의 목록으로 <see cref="OptionBase"/> 클래스를 초기화합니다.
+        /// </summary>
+        /// <param name="items"></param>
         protected OptionBase(params string[] items)
         {
             Items = items;
