@@ -14,6 +14,8 @@ namespace TerraText.UI
         /// </summary>
         public int TextWidth { get; set; }
 
+        public bool HasInputForm { get; set; }
+
         /// <summary>
         /// 옵션으로 출력될 텍스트의 목록으로 <see cref="Option"/> 클래스를 초기화합니다.
         /// </summary>
@@ -47,6 +49,8 @@ namespace TerraText.UI
         {
             int currentSelectedIndex = Result;
             bool isSelected = false;
+            bool isCursorVisible = Console.CursorVisible;
+            var inputForm = new InputForm(InputForm.Types.Netural);
 
             void AddCurrentSelectedIndex(int add)
             {
@@ -55,10 +59,15 @@ namespace TerraText.UI
 
             while (!isSelected)
             {
+                Console.CursorVisible = isCursorVisible;
                 ShowItems(currentSelectedIndex);
+                Console.Write('>');
+                Console.CursorVisible = true;
+                inputForm.SetBasePosition();
 
                 ConsoleEx.ReadFlush();
-                switch (Console.ReadKey(true).Key)
+                var inputKey = Console.ReadKey(true);
+                switch (inputKey.Key)
                 {
                     case ConsoleKey.UpArrow:
                         AddCurrentSelectedIndex(-1);
@@ -67,15 +76,23 @@ namespace TerraText.UI
                         AddCurrentSelectedIndex(+1);
                         break;
                     case ConsoleKey.Enter:
-                        Result = currentSelectedIndex;
+                        if (int.TryParse(inputForm.Result, out int inputNumber) && inputNumber <= Items.Count && inputNumber > 0)
+                        {
+                            Result = inputNumber - 1;
+                        }
+                        else Result = currentSelectedIndex;
                         isSelected = true;
                         break;
+                    default:
+                        inputForm.Input(inputKey);
+                        break;
                 }
+                inputForm.Show();
             }
         }
         private void ShowItems(int currentSelectedIndex)
         {
-            Console.CursorTop = BaseTop;
+            Console.SetCursorPosition(BaseLeft, BaseTop);
             for (int i = 0; i < Items.Count; i++)
             {
                 if (BaseLeft > 0)
@@ -83,13 +100,13 @@ namespace TerraText.UI
                 if (i == currentSelectedIndex)
                 {
                     Console.Write(SGR.Negative);
-                    ConsoleEx.BlockWrite(Items[i], TextAlign.Left, TextWidth);
+                    ConsoleEx.BlockWrite($"{i+1}.{Items[i]}", TextAlign.Left, TextWidth);
                     Console.Write(SGR.Positive);
                     Console.WriteLine();
                 }
                 else
                 {
-                    ConsoleEx.BlockWrite(Items[i], TextAlign.Left, TextWidth);
+                    ConsoleEx.BlockWrite($"{i+1}.{Items[i]}", TextAlign.Left, TextWidth);
                     Console.WriteLine();
                 }
             }

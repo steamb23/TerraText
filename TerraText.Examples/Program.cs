@@ -7,7 +7,7 @@ namespace TerraText.Examples
     {
         static void Main(string[] args)
         {
-            var option = new UI.Option(30, "1.색상 변경", "2.글꼴 변경", "3.이스케이프 시퀀스", "4.정렬 출력", "5.InputForm");
+            var option = new UI.Option(30, "색상 변경", "글꼴 변경", "이스케이프 시퀀스", "정렬 출력", "InputForm");
             while (true)
             {
                 Console.CursorVisible = false;
