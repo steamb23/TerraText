@@ -40,13 +40,17 @@ namespace TerraText.UI
             /// </summary>
             Normal,
             /// <summary>
-            /// 숫자와 일부 문자만 입력할 수 있습니다.
+            /// 실수만 입력할 수 있습니다.
             /// </summary>
             Number,
             /// <summary>
-            /// 숫자만 입력할 수 있습니다.
+            /// 정수만 입력할 수 있습니다.
             /// </summary>
             Integer,
+            /// <summary>
+            /// 자연수만 입력할 수 있습니다.
+            /// </summary>
+            Netural,
             /// <summary>
             /// 입력값을 *문자로 표시합니다.
             /// </summary>
@@ -94,15 +98,20 @@ namespace TerraText.UI
                     Backspace();
                     break;
                 default:
-                    if (Type == Types.Number || Type == Types.Integer)
+                    var currentText = stringBuilder.ToString();
+                    if (Type == Types.Number || Type == Types.Integer || Type == Types.Netural)
                     {
                         if (keyInfo.KeyChar >= '0' && keyInfo.KeyChar <= '9')
                         {
                             stringBuilder.Append(keyInfo.KeyChar);
                         }
+                        else if (keyInfo.KeyChar == '-' && Type != Types.Netural && currentText.Length == 0)
+                        {
+                            stringBuilder.Append('-');
+                        }
                         else if (keyInfo.KeyChar == '.' && Type == Types.Number)
                         {
-                            if (!stringBuilder.ToString().Contains('.'))
+                            if (!currentText.Contains('.'))
                                 stringBuilder.Append('.');
                         }
                     }
