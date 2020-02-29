@@ -64,6 +64,7 @@ namespace TerraText.UI
                 Console.Write('>');
                 Console.CursorVisible = true;
                 inputForm.SetBasePosition();
+                inputForm.Show();
 
                 ConsoleEx.ReadFlush();
                 var inputKey = Console.ReadKey(true);
@@ -76,19 +77,26 @@ namespace TerraText.UI
                         AddCurrentSelectedIndex(+1);
                         break;
                     case ConsoleKey.Enter:
-                        if (int.TryParse(inputForm.Result, out int inputNumber) && inputNumber <= Items.Count && inputNumber > 0)
+                        if (int.TryParse(inputForm.Result, out int inputNumber))
                         {
-                            Result = inputNumber - 1;
+                            if (inputNumber <= Items.Count && inputNumber > 0)
+                            {
+                                Result = inputNumber - 1;
+                                isSelected = true;
+                            }
                         }
-                        else Result = currentSelectedIndex;
-                        isSelected = true;
+                        else
+                        {
+                            Result = currentSelectedIndex;
+                            isSelected = true;
+                        }
                         break;
                     default:
                         inputForm.Input(inputKey);
                         break;
                 }
-                inputForm.Show();
             }
+            Console.CursorVisible = isCursorVisible;
         }
         private void ShowItems(int currentSelectedIndex)
         {
