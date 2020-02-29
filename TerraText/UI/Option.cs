@@ -7,15 +7,22 @@ namespace TerraText.UI
     /// <summary>
     /// 
     /// </summary>
-    public sealed class Option : OptionBase
+    public sealed class Option : OptionBase, ITable
     {
+        private int rowCount = 1;
+
         /// <summary>
-        /// 옵션으로 출력될 텍스트의 최소 폭입니다.
+        /// 옵션으로 출력될 텍스트의 최소 폭을 가져오거나 설정합니다.
         /// </summary>
         /// <remarks>
-        /// 출력되는 텍스트의 폭의 이 값보다 크면 가장 큰 값으로 재설정됩니다.
+        /// 출력되는 텍스트의 폭이 이 값보다 크면 가장 큰 값으로 재설정됩니다.
         /// </remarks>
         public int TextWidth { get; set; }
+
+        /// <summary>
+        /// 옵션으로 출력될 텍스트 열의 갯수를 가져오거나 설정합니다.
+        /// </summary>
+        public int RowCount { get => rowCount; set => rowCount = value > 0 ? value : 1; }
 
         /// <summary>
         /// 옵션 출력시 입력 폼을 포함할지에 대한 여부를 가져오거나 설정합니다.
@@ -46,17 +53,6 @@ namespace TerraText.UI
         {
             if (TextWidth < textWidth)
                 TextWidth = textWidth;
-        }
-
-        /// <summary>
-        /// 옵션으로 출력될 텍스트의 목록 텍스트의 길이, 입력 폼을 포함할지에 대한 여부로 <see cref="Option"/> 클래스의 인스턴스를 초기화합니다.
-        /// </summary>
-        /// <param name="textWidth">옵션으로 출력될 텍스트의 최대 폭입니다.</param>
-        /// <param name="hasInputForm">입력 폼을 포함할지에 대한 여부를 나타내는 부울 값입니다.</param>
-        /// <param name="items">옵션으로 출력될 텍스트의 목록입니다.</param>
-        public Option(int textWidth, bool hasInputForm, params string[] items) : this(textWidth, items)
-        {
-            HasInputForm = hasInputForm;
         }
 
         /// <summary>
@@ -91,9 +87,15 @@ namespace TerraText.UI
                 switch (inputKey.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        AddCurrentSelectedIndex(-1);
+                        AddCurrentSelectedIndex(-RowCount);
                         break;
                     case ConsoleKey.DownArrow:
+                        AddCurrentSelectedIndex(+RowCount);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        AddCurrentSelectedIndex(-1);
+                        break;
+                    case ConsoleKey.RightArrow:
                         AddCurrentSelectedIndex(+1);
                         break;
                     case ConsoleKey.Enter:
@@ -121,22 +123,24 @@ namespace TerraText.UI
         private void ShowItems(int currentSelectedIndex)
         {
             Console.SetCursorPosition(BaseLeft, BaseTop);
-            for (int i = 0; i < Items.Count; i++)
+            for (int i = 0; i < Items.Count;)
             {
                 if (BaseLeft > 0)
                     Console.CursorLeft = BaseLeft;
-                if (i == currentSelectedIndex)
+                for(int j = 0; j < RowCount && i < Items.Count; j++, i++)
                 {
-                    Console.Write(SGR.Negative);
-                    ConsoleEx.BlockWrite($"{i+1}.{Items[i]}", TextAlign.Left, TextWidth);
-                    Console.Write(SGR.Positive);
-                    Console.WriteLine();
+                    if (i == currentSelectedIndex)
+                    {
+                        Console.Write(SGR.Negative);
+                        ConsoleEx.BlockWrite($"{i + 1}.{Items[i]}", TextAlign.Left, TextWidth);
+                        Console.Write(SGR.Positive);
+                    }
+                    else
+                    {
+                        ConsoleEx.BlockWrite($"{i + 1}.{Items[i]}", TextAlign.Left, TextWidth);
+                    }
                 }
-                else
-                {
-                    ConsoleEx.BlockWrite($"{i+1}.{Items[i]}", TextAlign.Left, TextWidth);
-                    Console.WriteLine();
-                }
+                Console.WriteLine();
             }
         }
     }
