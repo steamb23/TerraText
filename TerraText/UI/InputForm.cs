@@ -12,6 +12,7 @@ namespace TerraText.UI
         public static string ReadLineNormal(int maxWidth = int.MaxValue) => new InputForm(Types.Normal, maxWidth).ReadLine();
         public static string ReadLineNumber(int maxWidth = int.MaxValue) => new InputForm(Types.Number, maxWidth).ReadLine();
         public static string ReadLineInteger(int maxWidth = int.MaxValue) => new InputForm(Types.Integer, maxWidth).ReadLine();
+        public static string ReadLineNetural(int maxWidth = int.MaxValue) => new InputForm(Types.Netural, maxWidth).ReadLine();
         public static string ReadLinePassword(int maxWidth = int.MaxValue) => new InputForm(Types.Password, maxWidth).ReadLine();
 
         public string ReadLine()
