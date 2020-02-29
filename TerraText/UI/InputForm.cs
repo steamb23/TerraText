@@ -112,7 +112,7 @@ namespace TerraText.UI
         /// </summary>
         public bool IsComplete { get; set; } = false;
 
-        private StringBuilder stringBuilder = new StringBuilder();
+        private readonly StringBuilder stringBuilder = new StringBuilder();
 
         /// <summary>
         /// 입력을 필터링할 방법과 입력받을 문자열의 최대폭을 사용해 <see cref="InputForm"/>의 인스턴스를 초기화합니다.
