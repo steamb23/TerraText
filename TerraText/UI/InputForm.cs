@@ -68,7 +68,7 @@ namespace TerraText.UI
         /// <summary>
         /// 입력된 결과를 가져옵니다.
         /// </summary>
-        public string? Result { get; private set; }
+        public string Result { get; private set; } = "";
 
         public bool IsInput { get; set; } = true;
 
