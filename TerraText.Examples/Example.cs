@@ -125,7 +125,7 @@ namespace TerraText.Examples
             {
                 var cursorVisible = Console.CursorVisible;
                 Console.CursorVisible = true;
-                while (inputForm.IsInput)
+                while (!inputForm.IsComplete)
                 {
                     inputForm.Input(Console.ReadKey(true));
                     inputForm.Show();

@@ -9,17 +9,50 @@ namespace TerraText.UI
     /// </summary>
     public sealed class InputForm : UIBase
     {
+        /// <summary>
+        /// 입력 폼에서 문자열을 읽습니다.
+        /// </summary>
+        /// <param name="maxWidth">입력받을 문자열의 최대 폭입니다.</param>
+        /// <returns>입력받은 문자열을 반환합니다.</returns>
         public static string ReadLineNormal(int maxWidth = int.MaxValue) => new InputForm(Types.Normal, maxWidth).ReadLine();
+
+        /// <summary>
+        /// 입력 폼에서 실수 형식의 문자열을 읽습니다.
+        /// </summary>
+        /// <param name="maxWidth">입력받을 문자열의 최대 폭입니다.</param>
+        /// <returns>입력받은 문자열을 반환합니다.</returns>
         public static string ReadLineNumber(int maxWidth = int.MaxValue) => new InputForm(Types.Number, maxWidth).ReadLine();
+
+        /// <summary>
+        /// 입력 폼에서 정수 형식의 문자열을 읽습니다.
+        /// </summary>
+        /// <param name="maxWidth">입력받을 문자열의 최대 폭입니다.</param>
+        /// <returns>입력받은 문자열을 반환합니다.</returns>
         public static string ReadLineInteger(int maxWidth = int.MaxValue) => new InputForm(Types.Integer, maxWidth).ReadLine();
+
+        /// <summary>
+        /// 입력 폼에서 자연수 형식의 문자열을 읽습니다.
+        /// </summary>
+        /// <param name="maxWidth">입력받을 문자열의 최대 폭입니다.</param>
+        /// <returns>입력받은 문자열을 반환합니다.</returns>
         public static string ReadLineNetural(int maxWidth = int.MaxValue) => new InputForm(Types.Netural, maxWidth).ReadLine();
+
+        /// <summary>
+        /// 입력 폼에서 문자열을 읽으며 입력 내용을 표시하지 않습니다.
+        /// </summary>
+        /// <param name="maxWidth">입력받을 문자열의 최대 폭입니다.</param>
+        /// <returns>입력받은 문자열을 반환합니다.</returns>
         public static string ReadLinePassword(int maxWidth = int.MaxValue) => new InputForm(Types.Password, maxWidth).ReadLine();
 
+        /// <summary>
+        /// 입력 폼에서 문자열을 읽습니다.
+        /// </summary>
+        /// <returns></returns>
         public string ReadLine()
         {
             var cursorVisible = Console.CursorVisible;
             Console.CursorVisible = true;
-            while (IsInput)
+            while (!IsComplete)
             {
                 Input(Console.ReadKey(true));
                 Show();
@@ -63,6 +96,9 @@ namespace TerraText.UI
         /// </summary>
         public Types Type { get; }
 
+        /// <summary>
+        /// 입력받을 문자열의 최대폭입니다.
+        /// </summary>
         public int MaxWidth { get; set; }
         private int textWidth;
 
@@ -71,11 +107,18 @@ namespace TerraText.UI
         /// </summary>
         public string Result { get; private set; } = "";
 
-        public bool IsInput { get; set; } = true;
+        /// <summary>
+        /// 입력이 완료되었는지에 대한 여부를 가져옵니다.
+        /// </summary>
+        public bool IsComplete { get; set; } = false;
 
         private StringBuilder stringBuilder = new StringBuilder();
 
-
+        /// <summary>
+        /// 입력을 필터링할 방법과 입력받을 문자열의 최대폭을 사용해 <see cref="InputForm"/>의 인스턴스를 초기화합니다.
+        /// </summary>
+        /// <param name="type">입력을 필터링할 방법입니다.</param>
+        /// <param name="maxWidth">입력받을 문자열의 최대폭</param>
         public InputForm(Types type = Types.Normal, int maxWidth = int.MaxValue)
         {
             MaxWidth = maxWidth;
@@ -88,12 +131,16 @@ namespace TerraText.UI
                 stringBuilder.Remove(stringBuilder.Length - 1, 1);
         }
 
+        /// <summary>
+        /// 지정된 콘솔 키 정보를 입력 폼에 입력합니다.
+        /// </summary>
+        /// <param name="keyInfo">입력할 콘솔 키 정보입니다.</param>
         public void Input(ConsoleKeyInfo keyInfo)
         {
             switch (keyInfo.Key)
             {
                 case ConsoleKey.Enter:
-                    IsInput = false;
+                    IsComplete = true;
                     break;
                 case ConsoleKey.Backspace:
                     Backspace();
@@ -136,6 +183,9 @@ namespace TerraText.UI
             }
         }
 
+        /// <summary>
+        /// 입력된 문자열을 출력합니다.
+        /// </summary>
         public override void Show()
         {
             if (Result != null)
