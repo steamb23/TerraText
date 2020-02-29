@@ -135,18 +135,31 @@ namespace TerraText.Examples
             }
             Console.Clear();
             Console.WriteLine($"기본 타입입니다.");
+            Console.Write('>');
             var inputForm = new UI.InputForm();
             ShowInputForm(inputForm);
             Console.WriteLine($"결과 : {inputForm.Result}");
             ConsoleEx.WaitKeyWithCursor();
+
             Console.WriteLine();
             Console.WriteLine($"숫자 타입입니다.");
+            Console.Write('>');
             inputForm = new UI.InputForm(UI.InputForm.Types.Number);
             ShowInputForm(inputForm);
             Console.WriteLine($"결과 : {inputForm.Result}");
             ConsoleEx.WaitKeyWithCursor();
+
+            Console.WriteLine();
+            Console.WriteLine($"정수 타입입니다.");
+            Console.Write('>');
+            inputForm = new UI.InputForm(UI.InputForm.Types.Integer);
+            ShowInputForm(inputForm);
+            Console.WriteLine($"결과 : {inputForm.Result}");
+            ConsoleEx.WaitKeyWithCursor();
+
             Console.WriteLine();
             Console.WriteLine($"패스워드 타입입니다.");
+            Console.Write('>');
             inputForm = new UI.InputForm(UI.InputForm.Types.Password);
             ShowInputForm(inputForm);
             Console.WriteLine($"결과 : {inputForm.Result}");

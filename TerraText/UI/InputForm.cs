@@ -9,9 +9,10 @@ namespace TerraText.UI
     /// </summary>
     public sealed class InputForm : UIBase
     {
-        public static string ReadLinePassword(int maxWidth = int.MaxValue) => new InputForm(Types.Password, maxWidth).ReadLine();
-        public static string ReadLineNumber(int maxWidth = int.MaxValue) => new InputForm(Types.Number, maxWidth).ReadLine();
         public static string ReadLineNormal(int maxWidth = int.MaxValue) => new InputForm(Types.Normal, maxWidth).ReadLine();
+        public static string ReadLineNumber(int maxWidth = int.MaxValue) => new InputForm(Types.Number, maxWidth).ReadLine();
+        public static string ReadLineInteger(int maxWidth = int.MaxValue) => new InputForm(Types.Integer, maxWidth).ReadLine();
+        public static string ReadLinePassword(int maxWidth = int.MaxValue) => new InputForm(Types.Password, maxWidth).ReadLine();
 
         public string ReadLine()
         {
@@ -42,6 +43,10 @@ namespace TerraText.UI
             /// 숫자와 일부 문자만 입력할 수 있습니다.
             /// </summary>
             Number,
+            /// <summary>
+            /// 숫자만 입력할 수 있습니다.
+            /// </summary>
+            Integer,
             /// <summary>
             /// 입력값을 *문자로 표시합니다.
             /// </summary>
@@ -89,13 +94,13 @@ namespace TerraText.UI
                     Backspace();
                     break;
                 default:
-                    if (Type == Types.Number)
+                    if (Type == Types.Number || Type == Types.Integer)
                     {
                         if (keyInfo.KeyChar >= '0' && keyInfo.KeyChar <= '9')
                         {
                             stringBuilder.Append(keyInfo.KeyChar);
                         }
-                        else if (keyInfo.KeyChar == '.')
+                        else if (keyInfo.KeyChar == '.' && Type == Types.Number)
                         {
                             if (!stringBuilder.ToString().Contains('.'))
                                 stringBuilder.Append('.');
