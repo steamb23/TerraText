@@ -119,6 +119,40 @@ namespace TerraText.Examples
             //----------
         }
 
+        internal static void InputFormExample()
+        {
+            static void ShowInputForm(UI.InputForm inputForm)
+            {
+                var cursorVisible = Console.CursorVisible;
+                Console.CursorVisible = true;
+                while (inputForm.IsInput)
+                {
+                    inputForm.Input(Console.ReadKey(true));
+                    inputForm.Show();
+                }
+                Console.WriteLine();
+                Console.CursorVisible = cursorVisible;
+            }
+            Console.Clear();
+            Console.WriteLine($"기본 타입입니다.");
+            var inputForm = new UI.InputForm();
+            ShowInputForm(inputForm);
+            Console.WriteLine($"결과 : {inputForm.Result}");
+            ConsoleEx.WaitKeyWithCursor();
+            Console.WriteLine();
+            Console.WriteLine($"숫자 타입입니다.");
+            inputForm = new UI.InputForm(UI.InputForm.Types.Number);
+            ShowInputForm(inputForm);
+            Console.WriteLine($"결과 : {inputForm.Result}");
+            ConsoleEx.WaitKeyWithCursor();
+            Console.WriteLine();
+            Console.WriteLine($"패스워드 타입입니다.");
+            inputForm = new UI.InputForm(UI.InputForm.Types.Password);
+            ShowInputForm(inputForm);
+            Console.WriteLine($"결과 : {inputForm.Result}");
+            ConsoleEx.WaitKeyWithCursor();
+        }
+
         public static void FontChange()
         {
             Console.Clear();

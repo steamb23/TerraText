@@ -12,7 +12,7 @@ namespace TerraText.UI
         /// <summary>
         /// 옵션으로 출력될 텍스트의 최대 폭입니다.
         /// </summary>
-        public int TextWidth { get; }
+        public int TextWidth { get; set; }
 
         /// <summary>
         /// 옵션으로 출력될 텍스트의 목록으로 <see cref="Option"/> 클래스를 초기화합니다.
