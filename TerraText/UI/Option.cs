@@ -11,6 +11,10 @@ namespace TerraText.UI
     {
         private int rowCount = 1;
 
+        /// <summary>
+        /// 옵션을 보여주며 유저가 선택한 옵션의 번호를 가져옵니다.
+        /// </summary>
+        /// <returns>유저가 선택한 번호입니다.</returns>
         public int Select()
         {
             while (true)
@@ -25,10 +29,16 @@ namespace TerraText.UI
             return Result;
         }
 
+        /// <summary>
+        /// 옵션과 입력 폼을 보여주며 유저가 선택한 옵션의 번호를 가져옵니다.
+        /// </summary>
+        /// <returns>유저가 선택한 번호입니다.</returns>
         public int SelectWithInputForm()
         {
-            var inputForm = new InputForm(InputForm.Types.Netural);
-            inputForm.Result = Result.ToString();
+            var inputForm = new InputForm(InputForm.Types.Netural)
+            {
+                Result = Result.ToString()
+            };
 
             // 결과 변경 감지용 변수
             int previousOptionResult = Result;
@@ -108,6 +118,10 @@ namespace TerraText.UI
                 TextWidth = textWidth;
         }
 
+        /// <summary>
+        /// 키 입력을 처리합니다.
+        /// </summary>
+        /// <param name="keyInfo"></param>
         public override void Input(ConsoleKeyInfo keyInfo)
         {
 

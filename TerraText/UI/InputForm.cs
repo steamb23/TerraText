@@ -101,7 +101,7 @@ namespace TerraText.UI
         /// </summary>
         public int MaxWidth { get; set; }
         private int textWidth;
-        private string result;
+        private string result = "";
 
         /// <summary>
         /// 입력된 결과를 가져옵니다.

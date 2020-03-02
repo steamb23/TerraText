@@ -34,6 +34,10 @@ namespace TerraText.UI
             Items = items;
         }
 
+        /// <summary>
+        /// 키 입력을 처리합니다.
+        /// </summary>
+        /// <param name="keyInfo">공용으로 처리되는 입력된 키 정보입니다.</param>
         public abstract void Input(ConsoleKeyInfo keyInfo);
     }
 }
