@@ -255,5 +255,20 @@ namespace TerraText.Examples
 
             ConsoleEx.WaitKeyWithCursor();
         }
+
+        public static void SceneExample()
+        {
+            Console.Clear();
+            Console.WriteLine("TerraText의 장면은 객체화된 실행 단위입니다.");
+            Console.WriteLine("장면을 객체화 시킴으로써 캡슐화, 상속, 다형성등 객체지향의 특징을 이용할 수 있습니다.");
+            ConsoleEx.WaitKeyWithCursor();
+            Console.WriteLine();
+            Console.WriteLine("장면을 이용하려면 먼저 장면 관리자와 루트 장면의 객체를 생성해야합니다.");
+            Console.WriteLine("그 후 장면관리자의 Run 메서드를 이용해 루트 장면을 집어넣으면 루트 장면이 실행됩니다.");
+            var sceneManager = new SceneManager();
+            sceneManager.Run(new Scenes.RootScene());
+            Console.WriteLine("종료가 예약되어 장면 관리를 빠져나왔습니다.");
+            ConsoleEx.WaitKeyWithCursor();
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace TerraText.Examples
     {
         static void Main(string[] args)
         {
-            var option = new UI.Option(30, "색상 변경", "글꼴 변경", "이스케이프 시퀀스", "정렬 출력", "InputForm")
+            var option = new UI.Option(30, "색상 변경", "글꼴 변경", "이스케이프 시퀀스", "정렬 출력", "InputForm", "장면 과 장면관리자")
             {
                 HasInputForm = true,
                 RowCount = 3
@@ -36,6 +36,9 @@ namespace TerraText.Examples
                         break;
                     case 4:
                         Example.InputFormExample();
+                        break;
+                    case 5:
+                        Example.SceneExample();
                         break;
                 }
             }
