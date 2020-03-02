@@ -9,7 +9,7 @@ namespace TerraText.Examples.Scenes
         public override void Execute()
         {
             Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------------------------------");
             Console.WriteLine("하위 장면1입니다.");
             ConsoleEx.WaitKeyWithCursor();
             Console.WriteLine();
