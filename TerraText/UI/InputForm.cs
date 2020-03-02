@@ -101,18 +101,26 @@ namespace TerraText.UI
         /// </summary>
         public int MaxWidth { get; set; }
         private int textWidth;
+        private string result;
 
         /// <summary>
         /// 입력된 결과를 가져옵니다.
         /// </summary>
-        public string Result { get; private set; } = "";
-
+        public string Result
+        {
+            get => result;
+            set
+            {
+                stringBuilder = new StringBuilder(value);
+                result = value;
+            }
+        }
         /// <summary>
         /// 입력이 완료되었는지에 대한 여부를 가져옵니다.
         /// </summary>
         public bool IsComplete { get; set; } = false;
 
-        private readonly StringBuilder stringBuilder = new StringBuilder();
+        private StringBuilder stringBuilder = new StringBuilder();
 
         /// <summary>
         /// 입력을 필터링할 방법과 입력받을 문자열의 최대폭을 사용해 <see cref="InputForm"/>의 인스턴스를 초기화합니다.
@@ -169,7 +177,7 @@ namespace TerraText.UI
                     }
                     break;
             }
-            Result = stringBuilder.ToString();
+            result = stringBuilder.ToString();
             // 글자 제한 처리
             var text = Type != Types.Password ? Result : new string('*', Result.Length);
 
@@ -179,7 +187,7 @@ namespace TerraText.UI
             if (finalCursorPos >= Console.BufferWidth || currentTextWidth > MaxWidth)
             {
                 Backspace();
-                Result = stringBuilder.ToString();
+                result = stringBuilder.ToString();
             }
         }
 

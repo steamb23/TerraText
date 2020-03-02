@@ -28,6 +28,12 @@ namespace TerraText.UI
         public int SelectWithInputForm()
         {
             var inputForm = new InputForm(InputForm.Types.Netural);
+            inputForm.Result = (Result + 1).ToString();
+
+            // 결과 변경 감지용 변수
+            int previousOptionResult = Result;
+            string previousInputFormResult = inputForm.Result;
+
             while (true)
             {
                 Show();
@@ -36,23 +42,26 @@ namespace TerraText.UI
                 inputForm.Show();
 
                 var input = Console.ReadKey();
-                if (input.Key == ConsoleKey.Enter)
-                {
-                    if (int.TryParse(inputForm.Result, out int inputNumber))
-                    {
-                        if (inputNumber <= Items.Count && inputNumber > 0)
-                        {
-                            return inputNumber - 1;
-                        }
-                    }
-                    else
-                    {
-                        return Result;
-                    }
-                }
+                // 제어권을 반환합니다.
+                if (input.Key == ConsoleKey.Enter) break;
+
                 Input(input);
                 inputForm.Input(input);
+                // 입력 폼에 값 설정
+                if (previousOptionResult != Result)
+                {
+                    inputForm.Result = (Result + 1).ToString();
+                }
+                else if (previousInputFormResult != inputForm.Result)
+                {
+                    if (int.TryParse(inputForm.Result, out int inputFormResult))
+                        Result = inputFormResult - 1;
+                }
+                previousOptionResult = Result;
+                previousInputFormResult = inputForm.Result;
             }
+
+            return Result;
         }
 
         /// <summary>
