@@ -51,6 +51,7 @@ namespace TerraText
             while (true)
             {
                 var currentScene = sceneStack.Peek();
+                currentScene.SetSceneManager(this);
                 currentScene.Execute();
                 if (isReservedExit)
                     break;
