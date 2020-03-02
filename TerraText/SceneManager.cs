@@ -71,7 +71,7 @@ namespace TerraText
                             break;
                     }
                 }
-                else
+                else if (CurrentSceneDepth > 0)
                 {
                     // Root Scene이 아니면 Pop
                     sceneStack.Pop();
