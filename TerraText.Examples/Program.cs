@@ -22,19 +22,19 @@ namespace TerraText.Examples
                 option.SetBasePosition();
                 switch (option.SelectWithInputForm())
                 {
-                    case 1:
+                    case 0:
                         Example.ColorChange();
                         break;
-                    case 2:
+                    case 1:
                         Example.FontChange();
                         break;
-                    case 3:
+                    case 2:
                         Example.EscapeSequenceExample();
                         break;
-                    case 4:
+                    case 3:
                         Example.BlockWriteExample();
                         break;
-                    case 5:
+                    case 4:
                         Example.InputFormExample();
                         break;
                 }
