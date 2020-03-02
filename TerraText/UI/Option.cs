@@ -28,7 +28,7 @@ namespace TerraText.UI
         public int SelectWithInputForm()
         {
             var inputForm = new InputForm(InputForm.Types.Netural);
-            inputForm.Result = (Result + 1).ToString();
+            inputForm.Result = Result.ToString();
 
             // 결과 변경 감지용 변수
             int previousOptionResult = Result;
@@ -50,12 +50,12 @@ namespace TerraText.UI
                 // 입력 폼에 값 설정
                 if (previousOptionResult != Result)
                 {
-                    inputForm.Result = (Result + 1).ToString();
+                    inputForm.Result = Result.ToString();
                 }
                 else if (previousInputFormResult != inputForm.Result)
                 {
                     if (int.TryParse(inputForm.Result, out int inputFormResult))
-                        Result = inputFormResult - 1;
+                        Result = inputFormResult;
                 }
                 previousOptionResult = Result;
                 previousInputFormResult = inputForm.Result;
@@ -148,12 +148,12 @@ namespace TerraText.UI
                     if (i == Result)
                     {
                         Console.Write(SGR.Negative);
-                        ConsoleEx.BlockWrite($"{i + 1}.{Items[i]}", TextAlign.Left, TextWidth);
+                        ConsoleEx.BlockWrite($"{i}.{Items[i]}", TextAlign.Left, TextWidth);
                         Console.Write(SGR.Positive);
                     }
                     else
                     {
-                        ConsoleEx.BlockWrite($"{i + 1}.{Items[i]}", TextAlign.Left, TextWidth);
+                        ConsoleEx.BlockWrite($"{i}.{Items[i]}", TextAlign.Left, TextWidth);
                     }
                 }
                 Console.WriteLine();
