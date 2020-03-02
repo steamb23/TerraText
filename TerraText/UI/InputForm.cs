@@ -7,7 +7,7 @@ namespace TerraText.UI
     /// <summary>
     /// 입력 폼을 나타냅니다.
     /// </summary>
-    public sealed class InputForm : UIBase
+    public sealed class InputForm : UIBase, IInputtable
     {
         /// <summary>
         /// 입력 폼에서 문자열을 읽습니다.

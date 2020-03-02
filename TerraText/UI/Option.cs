@@ -11,6 +11,50 @@ namespace TerraText.UI
     {
         private int rowCount = 1;
 
+        public int Select()
+        {
+            while (true)
+            {
+                Show();
+
+                var input = Console.ReadKey();
+                // 제어권을 반환합니다.
+                if (input.Key == ConsoleKey.Enter) break;
+                Input(input);
+            }
+            return Result;
+        }
+
+        public int SelectWithInputForm()
+        {
+            var inputForm = new InputForm(InputForm.Types.Netural);
+            while (true)
+            {
+                Show();
+                Console.Write('>');
+                inputForm.SetBasePosition();
+                inputForm.Show();
+
+                var input = Console.ReadKey();
+                if (input.Key == ConsoleKey.Enter)
+                {
+                    if (int.TryParse(inputForm.Result, out int inputNumber))
+                    {
+                        if (inputNumber <= Items.Count && inputNumber > 0)
+                        {
+                            return inputNumber - 1;
+                        }
+                    }
+                    else
+                    {
+                        return Result;
+                    }
+                }
+                Input(input);
+                inputForm.Input(input);
+            }
+        }
+
         /// <summary>
         /// 옵션으로 출력될 텍스트의 최소 폭을 가져오거나 설정합니다.
         /// </summary>
@@ -55,81 +99,44 @@ namespace TerraText.UI
                 TextWidth = textWidth;
         }
 
-        /// <summary>
-        /// 요소를 출력하고 기능을 수행합니다.
-        /// </summary>
-        public override void Show()
+        public override void Input(ConsoleKeyInfo keyInfo)
         {
-            int currentSelectedIndex = Result;
-            bool isSelected = false;
-            bool isCursorVisible = Console.CursorVisible;
-            var inputForm = new InputForm(InputForm.Types.Netural);
 
             void AddCurrentSelectedIndex(int add)
             {
-                currentSelectedIndex = (currentSelectedIndex + add + Items.Count) % Items.Count;
+                Result = (Result + add + Items.Count) % Items.Count;
             }
 
-            while (!isSelected)
+            switch (keyInfo.Key)
             {
-                Console.CursorVisible = isCursorVisible;
-                ShowItems(currentSelectedIndex);
-                Console.Write('>');
-                Console.CursorVisible = HasInputForm;
-                if (HasInputForm)
-                {
-                    inputForm.SetBasePosition();
-                    inputForm.Show();
-                }
-
-                ConsoleEx.ReadFlush();
-                var inputKey = Console.ReadKey(true);
-                switch (inputKey.Key)
-                {
-                    case ConsoleKey.UpArrow:
-                        AddCurrentSelectedIndex(-RowCount);
-                        break;
-                    case ConsoleKey.DownArrow:
-                        AddCurrentSelectedIndex(+RowCount);
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        AddCurrentSelectedIndex(-1);
-                        break;
-                    case ConsoleKey.RightArrow:
-                        AddCurrentSelectedIndex(+1);
-                        break;
-                    case ConsoleKey.Enter:
-                        if (int.TryParse(inputForm.Result, out int inputNumber))
-                        {
-                            if (inputNumber <= Items.Count && inputNumber > 0)
-                            {
-                                Result = inputNumber - 1;
-                                isSelected = true;
-                            }
-                        }
-                        else
-                        {
-                            Result = currentSelectedIndex;
-                            isSelected = true;
-                        }
-                        break;
-                    default:
-                        if (HasInputForm) inputForm.Input(inputKey);
-                        break;
-                }
+                case ConsoleKey.UpArrow:
+                    AddCurrentSelectedIndex(-RowCount);
+                    break;
+                case ConsoleKey.DownArrow:
+                    AddCurrentSelectedIndex(+RowCount);
+                    break;
+                case ConsoleKey.LeftArrow:
+                    AddCurrentSelectedIndex(-1);
+                    break;
+                case ConsoleKey.RightArrow:
+                    AddCurrentSelectedIndex(+1);
+                    break;
             }
-            Console.CursorVisible = isCursorVisible;
         }
-        private void ShowItems(int currentSelectedIndex)
+
+        /// <summary>
+        /// 요소를 출력합니다.
+        /// </summary>
+        public override void Show()
         {
             Console.SetCursorPosition(BaseLeft, BaseTop);
             for (int i = 0; i < Items.Count;)
             {
                 if (BaseLeft > 0)
                     Console.CursorLeft = BaseLeft;
-                for(int j = 0; j < RowCount && i < Items.Count; j++, i++)
+                for (int j = 0; j < RowCount && i < Items.Count; j++, i++)
                 {
-                    if (i == currentSelectedIndex)
+                    if (i == Result)
                     {
                         Console.Write(SGR.Negative);
                         ConsoleEx.BlockWrite($"{i + 1}.{Items[i]}", TextAlign.Left, TextWidth);

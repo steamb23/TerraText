@@ -20,8 +20,7 @@ namespace TerraText.Examples
 
                 Console.WriteLine("실행할 예제를 선택하세요.");
                 option.SetBasePosition();
-                option.Show();
-                switch (option.Result+1)
+                switch (option.SelectWithInputForm()+1)
                 {
                     case 1:
                         Example.ColorChange();

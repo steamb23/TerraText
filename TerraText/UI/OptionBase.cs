@@ -8,7 +8,7 @@ namespace TerraText.UI
     /// <summary>
     /// 옵션에 대한 기본 클래스를 나타냅니다.
     /// </summary>
-    public abstract class OptionBase : UIBase
+    public abstract class OptionBase : UIBase, IInputtable
     {
 
         /// <summary>
@@ -33,5 +33,7 @@ namespace TerraText.UI
         {
             Items = items;
         }
+
+        public abstract void Input(ConsoleKeyInfo keyInfo);
     }
 }
