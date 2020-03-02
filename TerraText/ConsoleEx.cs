@@ -656,7 +656,7 @@ namespace TerraText
             if (installedFontCollection == null)
                 installedFontCollection = new System.Drawing.Text.InstalledFontCollection();
 
-            return installedFontCollection.Families.FirstOrDefault(item => item.Name == fontName) != null;
+            return installedFontCollection.Families.FirstOrDefault(item => string.Equals(item.Name, fontName, StringComparison.CurrentCultureIgnoreCase)) != null;
         }
 
         /// <summary>
