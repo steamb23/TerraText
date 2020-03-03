@@ -52,6 +52,95 @@ namespace TerraText
             set => Win32Native.SetConsoleMode(StdOutputHandle, (uint)value);
         }
 
+        #region 그래픽 관련 멤버
+        public static Graphics GetConsoleGraphics()
+        {
+            return Graphics.FromHwnd(Win32Native.GetConsoleWindow());
+        }
+
+        #region DrawImage 오버로딩
+        /// <summary>
+        /// 현재 위치에 이미지를 출력합니다.
+        /// </summary>
+        /// <param name="path">출력할 이미지가 위치한 경로입니다.</param>
+        /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
+        public static void DrawImage(string path, bool isCursorControl = false) => DrawImage(path, Console.CursorLeft, Console.CursorTop, isCursorControl);
+
+        /// <summary>
+        /// 현재 위치에 이미지를 출력합니다.
+        /// </summary>
+        /// <param name="stream">출력할 이미지 파일을 나타내는 스트림입니다.</param>
+        /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
+        public static void DrawImage(System.IO.Stream stream, bool isCursorControl = false) => DrawImage(stream, Console.CursorLeft, Console.CursorTop, isCursorControl);
+
+        /// <summary>
+        /// 현재 위치에 이미지를 출력합니다.
+        /// </summary>
+        /// <param name="image">출력할 이미지입니다.</param>
+        /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
+        public static void DrawImage(Image image, bool isCursorControl = false) => DrawImage(image, Console.CursorLeft, Console.CursorTop, isCursorControl);
+
+
+        /// <summary>
+        /// 지정된 위치에 이미지를 출력합니다.
+        /// </summary>
+        /// <param name="path">출력할 이미지가 위치한 경로입니다.</param>
+        /// <param name="left">출력할 열의 위치입니다.</param>
+        /// <param name="top">출력할 행의 위치입니다.</param>
+        /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
+        public static void DrawImage(string path, int left, int top, bool isCursorControl = false)
+        {
+            using (var bitmap = new Bitmap(path))
+            {
+                DrawImage(bitmap, left, top, isCursorControl);
+            }
+        }
+
+        /// <summary>
+        /// 지정된 위치에 이미지를 출력합니다.
+        /// </summary>
+        /// <param name="stream">출력할 이미지 파일을 나타내는 스트림입니다.</param>
+        /// <param name="left">출력할 열의 위치입니다.</param>
+        /// <param name="top">출력할 행의 위치입니다.</param>
+        /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
+        public static void DrawImage(System.IO.Stream stream, int left, int top, bool isCursorControl = false)
+        {
+            using (var bitmap = new Bitmap(stream))
+            {
+                DrawImage(bitmap, left, top, isCursorControl);
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// 지정된 위치에 이미지를 출력합니다.
+        /// </summary>
+        /// <param name="image">출력할 이미지입니다.</param>
+        /// <param name="left">출력할 열의 위치입니다.</param>
+        /// <param name="top">출력할 행의 위치입니다.</param>
+        /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
+        public static void DrawImage(Image image, int left, int top, bool isCursorControl = false)
+        {
+            using (var g = GetConsoleGraphics())
+            {
+                // 폰트 정보 가져오기
+                var font = GetFont();
+
+                // 이미지 출력 후 커서 위치를 바꾸면 덮어 써져서 먼저 커서 위치를 바꿈
+                if (isCursorControl)
+                {
+                    Console.SetCursorPosition(0, image.Size.Height / font.fontSize + 1);
+                    //// 정확한 올림 연산
+                    //int ceiling(int value1, int value2) => (int)Math.Ceiling(value1 / (double)value2);
+
+                    //Console.SetCursorPosition(ceiling(image.Size.Width, font.fontWidth), image.Size.Height / font.fontSize);
+                }
+                g.DrawImage(image, new Point(font.fontSize * left, font.fontWidth * top));
+            }
+        }
+        #endregion
+
+
         #region 출력 관련 멤버
 
         #region BlockWrite 오버로딩 메서드
@@ -678,6 +767,11 @@ namespace TerraText
         }
 
         /// <summary>
+        /// 폰트의 폭을 가져옵니다.
+        /// </summary>
+        public static int FontWidth => GetFont().fontWidth;
+
+        /// <summary>
         /// 폰트 목록을 이용해 폰트를 변경합니다. 입력된 리스트 중 설치된 폰트가 없으면 시스템 기본 글꼴을 사용합니다.
         /// </summary>
         /// <param name="fontNames"></param>
@@ -720,14 +814,14 @@ namespace TerraText
         /// 폰트 이름과 폰트 사이즈를 가져옵니다.
         /// </summary>
         /// <returns>폰트 이름과 폰트 사이즈의 튜플입니다.</returns>
-        public static (string fontName, int fontSize) GetFont()
+        public static (string fontName, int fontSize, int fontWidth) GetFont()
         {
             var fontInfo = Win32Native.CONSOLE_FONT_INFO_EX.Create();
             var stdHandle = StdOutputHandle;
             if (!Win32Native.GetCurrentConsoleFontEx(stdHandle, false, ref fontInfo))
                 throw new NotSupportedException();
 
-            return (fontName: fontInfo.FaceName, fontSize: fontInfo.dwFontSize.Y);
+            return (fontName: fontInfo.FaceName, fontSize: fontInfo.dwFontSize.Y, fontWidth: fontInfo.dwFontSize.X);
         }
         #endregion
     }
