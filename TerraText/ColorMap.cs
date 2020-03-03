@@ -12,7 +12,10 @@ namespace TerraText
     /// </remarks>
     public abstract partial class ColorMap
     {
-
+        /// <summary>
+        /// 시스템에서 기본으로 사용될 컬러 맵입니다.
+        /// </summary>
+        public static ColorMap Default { get; set; } = new ColorMaps.ModernConsoleColor();
         /// <summary>
         /// 현재 콘솔 색상 팔레트를 이 객체의 내용으로 초기화합니다.
         /// </summary>
