@@ -7,12 +7,12 @@ namespace TerraText.UI
     /// <summary>
     /// 
     /// </summary>
-    public sealed class Option : OptionBase, ITable
+    public sealed class Menu : MenuBase, ITable
     {
         private int rowCount = 1;
 
         /// <summary>
-        /// 옵션을 보여주며 유저가 선택한 옵션의 번호를 가져옵니다.
+        /// 메뉴을 보여주며 유저가 선택한 메뉴의 번호를 가져옵니다.
         /// </summary>
         /// <returns>유저가 선택한 번호입니다.</returns>
         public int Select()
@@ -30,7 +30,7 @@ namespace TerraText.UI
         }
 
         /// <summary>
-        /// 옵션과 입력 폼을 보여주며 유저가 선택한 옵션의 번호를 가져옵니다.
+        /// 메뉴과 입력 폼을 보여주며 유저가 선택한 메뉴의 번호를 가져옵니다.
         /// </summary>
         /// <returns>유저가 선택한 번호입니다.</returns>
         public int SelectWithInputForm()
@@ -41,7 +41,7 @@ namespace TerraText.UI
             };
 
             // 결과 변경 감지용 변수
-            int previousOptionResult = Result;
+            int previousMenuResult = Result;
             string previousInputFormResult = inputForm.Result;
 
             while (true)
@@ -58,7 +58,7 @@ namespace TerraText.UI
                 Input(input);
                 inputForm.Input(input);
                 // 입력 폼에 값 설정
-                if (previousOptionResult != Result)
+                if (previousMenuResult != Result)
                 {
                     inputForm.Result = Result.ToString();
                 }
@@ -67,7 +67,7 @@ namespace TerraText.UI
                     if (int.TryParse(inputForm.Result, out int inputFormResult))
                         Result = inputFormResult;
                 }
-                previousOptionResult = Result;
+                previousMenuResult = Result;
                 previousInputFormResult = inputForm.Result;
             }
 
@@ -75,7 +75,7 @@ namespace TerraText.UI
         }
 
         /// <summary>
-        /// 옵션으로 출력될 텍스트의 최소 폭을 가져오거나 설정합니다.
+        /// 메뉴으로 출력될 텍스트의 최소 폭을 가져오거나 설정합니다.
         /// </summary>
         /// <remarks>
         /// 출력되는 텍스트의 폭이 이 값보다 크면 가장 큰 값으로 재설정됩니다.
@@ -83,7 +83,7 @@ namespace TerraText.UI
         public int TextWidth { get; set; }
 
         /// <summary>
-        /// 옵션으로 출력될 텍스트 열의 갯수를 가져오거나 설정합니다.
+        /// 메뉴으로 출력될 텍스트 열의 갯수를 가져오거나 설정합니다.
         /// </summary>
         public int RowCount { get => rowCount; set => rowCount = value > 0 ? value : 1; }
 
@@ -93,10 +93,10 @@ namespace TerraText.UI
         public bool IsShowNumber { get; set; }
 
         /// <summary>
-        /// 옵션으로 출력될 텍스트의 목록으로 <see cref="Option"/> 클래스의 인스턴스를 초기화합니다.
+        /// 메뉴으로 출력될 텍스트의 목록으로 <see cref="Menu"/> 클래스의 인스턴스를 초기화합니다.
         /// </summary>
-        /// <param name="items">옵션으로 출력될 텍스트의 목록입니다.</param>
-        public Option(params string[] items) : base(items)
+        /// <param name="items">메뉴으로 출력될 텍스트의 목록입니다.</param>
+        public Menu(params string[] items) : base(items)
         {
             // 최대 크기 계산
             foreach (var item in items)
@@ -108,11 +108,11 @@ namespace TerraText.UI
         }
 
         /// <summary>
-        /// 옵션으로 출력될 텍스트의 목록과 텍스트의 길이로 <see cref="Option"/> 클래스의 인스턴스를 초기화합니다.
+        /// 메뉴으로 출력될 텍스트의 목록과 텍스트의 길이로 <see cref="Menu"/> 클래스의 인스턴스를 초기화합니다.
         /// </summary>
-        /// <param name="textWidth">옵션으로 출력될 텍스트의 최대 폭입니다.</param>
-        /// <param name="items">옵션으로 출력될 텍스트의 목록입니다.</param>
-        public Option(int textWidth, params string[] items) : this(items)
+        /// <param name="textWidth">메뉴으로 출력될 텍스트의 최대 폭입니다.</param>
+        /// <param name="items">메뉴으로 출력될 텍스트의 목록입니다.</param>
+        public Menu(int textWidth, params string[] items) : this(items)
         {
             if (TextWidth < textWidth)
                 TextWidth = textWidth;
