@@ -90,10 +90,8 @@ namespace TerraText
         /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
         public static void DrawImage(string path, int left, int top, bool isCursorControl = false)
         {
-            using (var bitmap = new Bitmap(path))
-            {
-                DrawImage(bitmap, left, top, isCursorControl);
-            }
+            using var bitmap = new Bitmap(path);
+            DrawImage(bitmap, left, top, isCursorControl);
         }
 
         /// <summary>
@@ -105,10 +103,8 @@ namespace TerraText
         /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
         public static void DrawImage(System.IO.Stream stream, int left, int top, bool isCursorControl = false)
         {
-            using (var bitmap = new Bitmap(stream))
-            {
-                DrawImage(bitmap, left, top, isCursorControl);
-            }
+            using var bitmap = new Bitmap(stream);
+            DrawImage(bitmap, left, top, isCursorControl);
         }
         #endregion
 
@@ -121,22 +117,20 @@ namespace TerraText
         /// <param name="isCursorControl">출력 후 커서를 제어할 여부에 대한 값입니다.</param>
         public static void DrawImage(Image image, int left, int top, bool isCursorControl = false)
         {
-            using (var g = GetConsoleGraphics())
+            using var g = GetConsoleGraphics();
+            // 폰트 정보 가져오기
+            var (fontName, fontSize, fontWidth) = GetFont();
+
+            // 이미지 출력 후 커서 위치를 바꾸면 덮어 써져서 먼저 커서 위치를 바꿈
+            if (isCursorControl)
             {
-                // 폰트 정보 가져오기
-                var (fontName, fontSize, fontWidth) = GetFont();
+                Console.SetCursorPosition(0, image.Size.Height / fontSize + 1);
+                //// 정확한 올림 연산
+                //int ceiling(int value1, int value2) => (int)Math.Ceiling(value1 / (double)value2);
 
-                // 이미지 출력 후 커서 위치를 바꾸면 덮어 써져서 먼저 커서 위치를 바꿈
-                if (isCursorControl)
-                {
-                    Console.SetCursorPosition(0, image.Size.Height / fontSize + 1);
-                    //// 정확한 올림 연산
-                    //int ceiling(int value1, int value2) => (int)Math.Ceiling(value1 / (double)value2);
-
-                    //Console.SetCursorPosition(ceiling(image.Size.Width, font.fontWidth), image.Size.Height / font.fontSize);
-                }
-                g.DrawImage(image, new Point(fontSize * left, fontWidth * top));
+                //Console.SetCursorPosition(ceiling(image.Size.Width, font.fontWidth), image.Size.Height / font.fontSize);
             }
+            g.DrawImage(image, new Point(fontSize * left, fontWidth * top));
         }
         #endregion
 
