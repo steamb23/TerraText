@@ -46,18 +46,18 @@ namespace TerraText
         public void Run(Scene rootScene)
         {
             // 최상위 장면 추가
-            Debug.WriteLine($"{nameof(SceneManager)} - 루트 장면 준비... {rootScene.GetType()}");
+            Log.Debug($"{nameof(SceneManager)} - 루트 장면 준비... {rootScene.GetType()}");
             sceneStack.Push(rootScene);
-            Debug.WriteLine($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
+            Log.Debug($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
 
             while (true)
             {
                 var currentScene = sceneStack.Peek();
                 currentScene.SetSceneManager(this);
-                Debug.WriteLine($"{nameof(SceneManager)} - 장면 실행... {currentScene.GetType()}");
-                Debug.WriteLine("");
+                Log.Info($"{nameof(SceneManager)} - 장면 실행... {currentScene.GetType()}");
+                //Log.Info("");
                 currentScene.Execute();
-                Debug.WriteLine($"{nameof(SceneManager)} - 장면 종료");
+                Log.Debug($"{nameof(SceneManager)} - 장면 종료");
                 if (isReservedExit)
                     break;
                 if (reservedScene != null)
@@ -65,31 +65,31 @@ namespace TerraText
                     switch (reserveSceneMode)
                     {
                         case ReserveSceneMode.Child:
-                            Debug.WriteLine($"{nameof(SceneManager)} - 자식 장면 준비... {reservedScene.GetType()}");
+                            Log.Debug($"{nameof(SceneManager)} - 자식 장면 준비... {reservedScene.GetType()}");
                             sceneStack.Push(reservedScene);
                             reservedScene = null;
-                            Debug.WriteLine($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
+                            Log.Debug($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
                             break;
                         case ReserveSceneMode.Change:
-                            Debug.WriteLine($"{nameof(SceneManager)} - 장면 변경 준비... {reservedScene.GetType()}");
+                            Log.Debug($"{nameof(SceneManager)} - 장면 변경 준비... {reservedScene.GetType()}");
                             currentScene = sceneStack.Pop();
                             currentScene.SetSceneManager(null);
                             sceneStack.Push(reservedScene);
                             reservedScene = null;
-                            Debug.WriteLine($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
+                            Log.Debug($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
                             break;
                     }
                 }
                 else if (CurrentSceneDepth > 0)
                 {
                     // Root Scene이 아니면 Pop
-                    Debug.WriteLine($"{nameof(SceneManager)} - 부모 장면 준비...");
+                    Log.Debug($"{nameof(SceneManager)} - 부모 장면 준비...");
                     sceneStack.Pop();
-                    Debug.WriteLine($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
+                    Log.Debug($"{nameof(SceneManager)} - 장면 깊이: {CurrentSceneDepth}");
                 }
             }
-            Debug.WriteLine($"{nameof(SceneManager)} - 종료");
-            Debug.WriteLine("");
+            Log.Debug($"{nameof(SceneManager)} - 종료");
+            Log.Debug("");
 
             // 객체 재사용을 위한 종료 절차
             sceneStack.Clear();
@@ -102,7 +102,7 @@ namespace TerraText
         /// </summary>
         public void ReserveExit()
         {
-            Debug.WriteLine($"{nameof(SceneManager)} - 종료 예약...");
+            Log.Debug($"{nameof(SceneManager)} - 종료 예약...");
             isReservedExit = true;
         }
 
@@ -112,7 +112,7 @@ namespace TerraText
         /// <param name="scene">예약할 장면입니다.</param>
         public void ReserveChildScene(Scene scene)
         {
-            Debug.WriteLine($"{nameof(SceneManager)} - 자식 장면 예약... {scene.GetType()}");
+            Log.Debug($"{nameof(SceneManager)} - 자식 장면 예약... {scene.GetType()}");
             reserveSceneMode = ReserveSceneMode.Child;
             reservedScene = scene;
         }
@@ -123,7 +123,7 @@ namespace TerraText
         /// <param name="scene">예약할 장면입니다.</param>
         public void ReserveSceneChange(Scene scene)
         {
-            Debug.WriteLine($"{nameof(SceneManager)} - 장면 변경 예약... {scene.GetType()}");
+            Log.Debug($"{nameof(SceneManager)} - 장면 변경 예약... {scene.GetType()}");
             reserveSceneMode = ReserveSceneMode.Change;
             reservedScene = scene;
         }
