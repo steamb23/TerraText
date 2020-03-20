@@ -348,7 +348,7 @@ namespace TerraText
         /// <param name="isManagedCursor">출력후 커서의 위치를 제어할지 여부를 나타내는 부울 값입니다.</param>
         public static void AlignedWrite(string value, TextAlign textAlign, bool isManagedCursor = false)
         {
-            var textWidth = UnicodeWidth.GetWidth(value);
+            var textWidth = UnicodeWidth.GetWidth(EscapeSequence.RemoveSequence(value));
 
             switch (textAlign)
             {
