@@ -469,6 +469,29 @@ namespace TerraText
                 out uint lpNumberOfCharsWritten
                 );
 
+            [DllImport("user32.dll", SetLastError = true)]
+            internal static extern IntPtr GetSystemMenu(
+                IntPtr hWnd,
+                bool bRevert
+                );
+
+            [DllImport("user32.dll", SetLastError = true)]
+            internal static extern int DeleteMenu(
+                IntPtr hMenu,
+                int nPosition,
+                int wFlags
+                );
+
+            [DllImport("user32.dll", SetLastError = true)]
+            internal static extern bool EnableMenuItem(
+                IntPtr hMenu,
+                uint uIDEnableItem,
+                uint uEnable
+                );
+
+            [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+            internal static extern bool AppendMenu(IntPtr hMenu, uint uFlags, uint uIDNewItem, string lpNewItem);
+
             [StructLayout(LayoutKind.Sequential)]
             internal struct COORD
             {

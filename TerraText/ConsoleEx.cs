@@ -140,6 +140,53 @@ namespace TerraText
         }
         #endregion
 
+        #region 윈도우 관련 멤버
+        /// <summary>
+        /// 사용자에 의한 콘솔창의 크기 변경을 잠급니다.
+        /// </summary>
+        public static void LockResize()
+        {
+            const int MF_BYCOMMAND = 0x00000000;
+            //const int MF_DISABLE = 0x00000002;
+            //const int MF_ENABLE = 0x00000000;
+            //const int SC_CLOSE = 0xF060;
+            //const int SC_MINIMIZE = 0xF020;
+            const int SC_MAXIMIZE = 0xF030;
+            const int SC_SIZE = 0xF000;
+
+            var consoleHwnd = Win32Native.GetConsoleWindow();
+            var consoleSysMenu = Win32Native.GetSystemMenu(consoleHwnd, false);
+
+            if (consoleHwnd != IntPtr.Zero)
+            {
+                Win32Native.DeleteMenu(consoleSysMenu, SC_MAXIMIZE, MF_BYCOMMAND);
+                Win32Native.DeleteMenu(consoleSysMenu, SC_SIZE, MF_BYCOMMAND);
+            }
+        }
+
+        /// <summary>
+        /// 사용자에 의한 콘솔창의 크기 변경을 잠금해제합니다.
+        /// </summary>
+        public static void UnlockResize()
+        {
+            const int MF_BYPOSITION = 0x00000400;
+            //const int MF_DISABLE = 0x00000002;
+            //const int MF_ENABLE = 0x00000000;
+            //const int SC_CLOSE = 0xF060;
+            //const int SC_MINIMIZE = 0xF020;
+            const int SC_MAXIMIZE = 0xF030;
+            const int SC_SIZE = 0xF000;
+
+            var consoleHwnd = Win32Native.GetConsoleWindow();
+            var consoleSysMenu = Win32Native.GetSystemMenu(consoleHwnd, false);
+
+            if (consoleHwnd != IntPtr.Zero)
+            {
+                Win32Native.AppendMenu(consoleSysMenu, MF_BYPOSITION, SC_MAXIMIZE , "Maximize");
+                Win32Native.AppendMenu(consoleSysMenu, MF_BYPOSITION, SC_SIZE, "Resize");
+            }
+        }
+        #endregion
 
         #region 출력 관련 멤버
 
