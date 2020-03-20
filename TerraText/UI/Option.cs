@@ -21,7 +21,7 @@ namespace TerraText.UI
             {
                 Show();
 
-                var input = Console.ReadKey();
+                var input = Console.ReadKey(true);
                 // 제어권을 반환합니다.
                 if (input.Key == ConsoleKey.Enter) break;
                 Input(input);
@@ -51,7 +51,7 @@ namespace TerraText.UI
                 inputForm.SetBasePosition();
                 inputForm.Show();
 
-                var input = Console.ReadKey();
+                var input = Console.ReadKey(true);
                 // 제어권을 반환합니다.
                 if (input.Key == ConsoleKey.Enter) break;
 
@@ -88,9 +88,9 @@ namespace TerraText.UI
         public int RowCount { get => rowCount; set => rowCount = value > 0 ? value : 1; }
 
         /// <summary>
-        /// 옵션 출력시 입력 폼을 포함할지에 대한 여부를 가져오거나 설정합니다.
+        /// 메뉴 출력시 번호와 같이 출력할지 여부에 대해 가져오거나 설정합니다.
         /// </summary>
-        public bool HasInputForm { get; set; } = true;
+        public bool IsShowNumber { get; set; }
 
         /// <summary>
         /// 옵션으로 출력될 텍스트의 목록으로 <see cref="Option"/> 클래스의 인스턴스를 초기화합니다.
@@ -159,15 +159,20 @@ namespace TerraText.UI
                     Console.CursorLeft = BaseLeft;
                 for (int j = 0; j < RowCount && i < Items.Count; j++, i++)
                 {
+                    string menuItemText;
+                    if (IsShowNumber)
+                        menuItemText = $"{i}.{Items[i]}";
+                    else
+                        menuItemText = Items[i];
                     if (i == Result)
                     {
                         Console.Write(SGR.Negative);
-                        ConsoleEx.BlockWrite($"{i}.{Items[i]}", TextAlign.Left, TextWidth);
+                        ConsoleEx.BlockWrite(menuItemText, TextAlign.Left, TextWidth);
                         Console.Write(SGR.Positive);
                     }
                     else
                     {
-                        ConsoleEx.BlockWrite($"{i}.{Items[i]}", TextAlign.Left, TextWidth);
+                        ConsoleEx.BlockWrite(menuItemText, TextAlign.Left, TextWidth);
                     }
                 }
                 Console.WriteLine();
