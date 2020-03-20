@@ -21,6 +21,7 @@ namespace TerraText.UI
             {
                 Show();
 
+                ConsoleEx.ReadFlush();
                 var input = Console.ReadKey(true);
                 // 제어권을 반환합니다.
                 if (input.Key == ConsoleKey.Enter) break;
@@ -51,6 +52,7 @@ namespace TerraText.UI
                 inputForm.SetBasePosition();
                 inputForm.Show();
 
+                ConsoleEx.ReadFlush();
                 var input = Console.ReadKey(true);
                 // 제어권을 반환합니다.
                 if (input.Key == ConsoleKey.Enter) break;
