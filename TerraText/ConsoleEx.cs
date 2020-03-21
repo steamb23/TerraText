@@ -53,6 +53,10 @@ namespace TerraText
         }
 
         #region 그래픽 관련 멤버
+        /// <summary>
+        /// 콘솔 창에 대한 GDI+ 그래픽 인터페이스를 가져옵니다.
+        /// </summary>
+        /// <returns></returns>
         public static Graphics GetConsoleGraphics()
         {
             return Graphics.FromHwnd(Win32Native.GetConsoleWindow());
